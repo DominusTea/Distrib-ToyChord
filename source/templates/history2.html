@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+	<body>
+		<table border = 1>
+		{% for key, value in messages.items() %}
+		<tr>
+			<th> {{ key }} </th>
+			{%for key1, value1 in value.items()%}
+			<td> {{ key1 }} </td>
+			<td> {{ value1 }} </td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+		</table>
+	</body>
+</html>
