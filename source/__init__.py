@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-from node import Node
+from source.node import Node
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
@@ -27,5 +27,6 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'+str(app.config["BOOTSTRAP_IP"])
+
 
     return app
