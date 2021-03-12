@@ -36,11 +36,24 @@ def give_credentials(ip, boot_ip, port):
     hasLoggedIn = True
     click.echo(f"Set Ip to {THIS_IP}")
 
+
+@cli.command()
+def overlay():
+    if hasLoggedIn:
+        click.echo(f"Attempting to get Network's overlay.")
+        res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/overlay")
+        click.echo("Successfully found Network's overlay")
+        click.echo(f"Overlay: {res.json()}")
+
+    else:
+        click.echo(f"Must login first (using give_credentials command)")
+
 @cli.command()
 def join():
     if hasLoggedIn:
         click.echo(f"Attempting to join ToyChord P2P Network with ip = {THIS_IP}, port={THIS_PORT}, on bootstrap = {BOOTSTRAP_IP}")
-        res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/join")
+        res = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/join")).json()
+        click.echo(f"Successfully joined with id {res['assigned_position']}")
 
     else:
         click.echo(f"Must login first (using give_credentials command)")
@@ -49,7 +62,7 @@ def join():
 def depart():
     if hasLoggedIn:
         click.echo(f"Attempting to depart from ToyChrod P2P Network")
-        res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/depart")    
+        res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/depart")
     else:
         click.echo(f"Must login first (using give_credentials command)")
 @cli.command()

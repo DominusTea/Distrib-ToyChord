@@ -8,6 +8,8 @@ import requests
 import json
 import numpy as np
 from source.lib import merge_dict
+from source.message import *
+import time
 
 def create_app(test_config=None):
     # create and configure the app
@@ -25,8 +27,11 @@ def create_app(test_config=None):
             print("configuring from configBOOTSTRAP.py")
             app.config.from_pyfile('configBOOTSTRAP.py', silent=False)
         if os.environ.get("SET_PORT") is not None:
+            print("Port detected set to ", os.environ.get("SET_PORT"))
             app.config["THIS_IP"] = app.config["THIS_IP"].split(":")[0]+\
                         ":"+str(os.environ.get("SET_PORT"))
+        else:
+            print("Port not pre-set")
     else:
         # load the test config if passed in
         print("test config")
@@ -171,6 +176,43 @@ def create_app(test_config=None):
                             "updated prev": prev_id, \
                             })
 
+    @app.route('/overlay',methods=['GET'])
+    def overlay():
+        '''
+        Returns overlay of network
+        '''
+        networkOverlay = thisNode.getOverlay()
+        return json.dumps({"status": "Success", \
+                            "Overlay": networkOverlay})
+
+    @app.route('/add2overlay/',methods=['POST'])
+    def add2overlay():
+        overlay_msg_fields = dict(request.get_json())
+        overlayMsg = OverlayMessage(overlay_msg_fields)
+        if thisNode.getAssignedId() == overlay_msg_fields["sender_id"]:
+            # set overlay response as done
+            thisNode.setOverlayResponses(overlay_msg_fields["message_id"], overlay_msg_fields["data"])
+            print(thisNode.getOverlayResponses())
+            return json.dumps({"status": "Success", \
+                            "msg": f"Overlay finished"})
+        else:
+            overlayMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            # request on other node for add2overlay
+            requests.post(f"http://{thisNode.getNextIp()}/add2overlay/",\
+                            json=overlayMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded overlay request to {thisNode.getNext()}"})
+
+
+    @app.route('/wait4overlay/<string:cur_id>/<string:msg_id>', methods=['GET'])
+    def wait4overlay(cur_id, msg_id):
+        while (msg_id not in thisNode.getOverlayResponses()):
+            time.sleep(1)
+            print(type(msg_id), msg_id)
+            print(thisNode.getOverlayResponses())
+            pass
+        return json.dumps({"status": "Success", "OverlayId":msg_id, "Overlay":thisNode.getOverlayResponses()[msg_id] })
 
 
     @app.route('/insert', methods=['POST'])
@@ -219,7 +261,8 @@ def create_app(test_config=None):
     def load_data_from_file():
         '''
         Loads data from data directory. File should be named insert.txt
-        Must be run only from Bootstrap Node
+        Loads data to callee node. Doesnt (yet) partition the data according
+        to their hash(key) to the corresponding nodes.
         '''
         DHT={}
         import pathlib

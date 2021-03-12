@@ -2,6 +2,7 @@ from hashlib import sha1
 import requests
 import json
 import random
+from source.message import *
 
 '''
 Contains code for node class
@@ -30,6 +31,8 @@ class Node:
         self.next_ip = None
         self.prev_id = None
         self.next_id = None
+        self.msg_id = 0
+        self.responses = {}
 
     def clear(self):
 
@@ -52,6 +55,15 @@ class Node:
 
     def setDHT(self,dht_dict):
         self.DHT = dht_dict.copy()
+
+    def setOverlayResponses(self, msg_id, msg_val):
+        print("a:", msg_id)
+        print("type of msg_id:", type(msg_id))
+        if type(msg_id)==str:
+            self.responses[msg_id] = msg_val
+            print("dict:", self.responses)
+        else:
+            print("Set Overlay Response ERRROR")
 
     def insertToDht(self, key, val):
         self.DHT[key] = val
@@ -162,31 +174,70 @@ class Node:
         raise NotImplementedError
     def getNext(self):
         '''
-        to get next node id
+        get next node's id
         '''
         return self.next_id
-
+    def getNextIp(self):
+        '''
+        get next node's ip
+        '''
+        return self.next_ip
     def getPrev(self):
         '''
-         get previous node id
+        get previous node's id
         '''
         return self.prev_id
+
+    def getPrevIp(self):
+        '''
+        get prev node's ip
+        '''
+        return self.prev_ip
+
     def getAssignedId(self):
         '''
-        returns assigned id
+        returns node's assigned id
         '''
         return self.assigned_id
+    def getIp(self):
+        '''
+        returns node's ip
+        '''
+        return self.ip
 
     def getDHT(self):
         '''
         get DHT keys from local Node
         '''
         return self.DHT
+
+    def getMsgId(self):
+        '''
+        Returns unique message id concatenated with NodeId.
+        The Id is unique globally.
+
+        '''
+        print("before: ", self.msg_id)
+        self.msg_id += 1
+        print("after: ", self.msg_id)
+        return  str(self.assigned_id) + "_" + str(self.msg_id)
+
     def getOverlay(self):
         '''
         API request to get overlay of network's topology.
         '''
-        raise NotImplementedError
+        msg_id = self.getMsgId()
+        overlay_msg = OverlayMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                            sender_ip=self.ip, msg="")
+        # begin asking for overlay from next ip
+        overlay_req = (requests.post(f"http://{self.next_ip}/add2overlay/", json=overlay_msg.__dict__)).json()
+        # wait for response at wait4overlay route
+        overlay_response = (requests.get(f"http://{self.ip}/wait4overlay/{self.assigned_id}/{msg_id}")).json()
+
+        return overlay_response
+
+    def getOverlayResponses(self):
+        return self.responses
 
 class BootstrapNode(Node):
     def __init__(self, ip):
