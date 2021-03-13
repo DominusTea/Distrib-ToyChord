@@ -72,6 +72,16 @@ def print_all():
             res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/print_all")
             click.echo(res.json())
 
+@cli.command()
+@click.argument('key')
+@click.argument('value')
+def insert(key, value):
+    if hasLoggedIn:
+        click.echo(f"Attempting to insert ({key}, {value}) into the ToyChrod Network")
+        res = requests.post(f"http://{THIS_IP}:{THIS_PORT}/insert", \
+                    json={"key_data":key, "val_data":value})
+        click.echo(res.json())
+
 if __name__=="__main__":
 
     global BOOTSTRAP_IP, THIS_IP, THIS_PORT, hasLoggedIn

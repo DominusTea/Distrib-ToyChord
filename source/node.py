@@ -33,6 +33,7 @@ class Node:
         self.next_id = None
         self.msg_id = 0
         self.responses = {}
+        self.ack = {}
 
     def clear(self):
 
@@ -56,6 +57,9 @@ class Node:
     def setDHT(self,dht_dict):
         self.DHT = dht_dict.copy()
 
+    def setAck(self, msg_id, msg_val):
+        self.ack[msg_id] = msg_val
+
     def setOverlayResponses(self, msg_id, msg_val):
         print("a:", msg_id)
         print("type of msg_id:", type(msg_id))
@@ -65,8 +69,8 @@ class Node:
         else:
             print("Set Overlay Response ERRROR")
 
-    def insertToDht(self, key, val):
-        self.DHT[key] = val
+    def insertToDht(self, key, hash, val):
+        self.DHT[hash][key] = val
 
     def notify_join_prev(self):
         ntf_prev_req = (requests.get("http://"+self.prev_ip+f"/accept_join_next/{self.ip}/{self.assigned_id}")).json()
@@ -85,11 +89,9 @@ class Node:
         #print("JSON:", departee_dict)
         ntf_next_req = (requests.post("http://"+self.next_ip+f"/accept_depart_prev/{self.prev_ip}/{self.prev_id}",\
                         json=self.DHT)).json()
-        #ntf_next_req = ntf_next_req.json()
-        # print("DHT:", ntf_next_req["DHT"])
-        # self.DHT = ntf_next_req["DHT"]
-        # print("DHT KEYS",self.DHT.keys())
-        #print(ntf_next_req)
+
+    def getBootstrap(self):
+        return self.isBootstrap
 
     def join(self):
         '''
@@ -158,7 +160,21 @@ class Node:
         API request to insert value. If it already exists
         then the value is updated instead.
         '''
-        raise NotImplementedError
+        hashkey = str(getId(key))
+        if hashkey in self.getDHT().keys():
+            self.insertToDht(key, hashkey, value)
+            wait_req = (requests.get("http://"+self.next_ip+f"/wait4insert/")).json()
+            #return {"status": "Success", \
+            #        "text": f"Successfuly added {key}, {value} in node {self.assigned_id}"}
+        else:
+            msg_id = self.getMsgId()
+            insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, sender_ip=self.ip, msg="", key_data=key, val_data=value)
+            # begin asking for overlay from next ip
+            insert_req = (requests.post(f"http://{self.next_ip}/propagate_insert/", json=insert_msg.__dict__)).json()
+            # wait for response at wait4overlay route
+            wait_req = (requests.get("http://"+self.next_ip+f"/wait4insert/")).json()
+
+        return wait_req
 
     def query(self, key):
         '''
@@ -239,10 +255,18 @@ class Node:
     def getOverlayResponses(self):
         return self.responses
 
+    def getInsertAck(self):
+        return self.ack
+
+    def getAck(self):
+        return self.ack
+
 class BootstrapNode(Node):
     def __init__(self, ip):
         super().__init__(ip, ip, True)
         self.id_ip_dict = {}
+        for i in range(10):
+            self.DHT[str(i)] = {}
 
     def check_join(self, joinee_ip):
         '''

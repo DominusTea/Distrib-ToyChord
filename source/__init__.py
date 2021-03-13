@@ -10,6 +10,7 @@ import numpy as np
 from source.lib import merge_dict
 from source.message import *
 import time
+import pathlib
 
 def create_app(test_config=None):
     # create and configure the app
@@ -218,15 +219,69 @@ def create_app(test_config=None):
     @app.route('/insert', methods=['POST'])
     def insert():
         '''
-        Uploads data to caller DHT. This is not the desired behaviour
-        We should change it!
+        Starts insertion of {key,value} pair
         '''
-        insertion_dict = requests.get_json()["data_dict"] #dictionary with insertion (key, val) pairs
-        for entry in insertion_dict:
-            thisNode.insertToDht(entry, insertion_dict[entry])
+        # insertion_dict = requests.get_json()["data_dict"] #dictionary with insertion (key, val) pairs
+        # for entry in insertion_dict:
+        #     thisNode.insertToDht(entry, insertion_dict[entry])
+        #
+        # return json.dumps({"status": 'Success', \
+        #                     }
 
-        return json.dumps({"status": 'Success', \
-                            })
+        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        msg_key, msg_val = insert_msg_fields["key_data"], insert_msg_fields["val_data"]
+        insertionResult = thisNode.insert(msg_key, msg_val)
+
+        return json.dumps({"status": "Success", \
+                            "msg": f"Successful insertion of data ({msg_key}, {msg_val})"})
+
+    @app.route('/propagate_insert/', methods=['POST'])
+    def propagate_insert():
+        '''
+        Propagates the insertion message
+        '''
+        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+
+        msg_key, msg_val = \
+        list(insert_msg_fields["insert_data"].keys())[0], list(insert_msg_fields["insert_data"].values())[0] #{k:v}
+
+
+        res = thisNode.insert(msg_key, msg_val)
+        if type(res) is not dict:
+            insertionResult = res.json()
+
+
+        if thisNode.getAssignedId() == insert_msg_fields["sender_id"]:
+            # set overlay response as done
+
+            thisNode.setAck(insert_msg_fields["message_id"], insert_msg_fields["data"])
+            return json.dumps({"status": "Success", \
+                            "msg": f"Insertion finished"})
+        else:
+            insertMsg = InsertionMessage(insert_msg_fields)
+            insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            # request on other node for add2overlay
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_insert/",\
+                            json=insertMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded insert request to {thisNode.getNext()}"})
+
+
+
+    @app.route('/wait4insert/<string:cur_id>/<string:msg_id>', methods=['GET'])
+    def wait4insert(cur_id, msg_id):
+        '''
+        '''
+        while (msg_id not in thisNode.getInsertAck()):
+            print("--------------------------------")
+            print(thisNode.getInsertAck)
+            print("--------------------------------")
+            time.sleep(1)
+            #print(type(msg_id), msg_id)
+            #print(thisNode.getOverlayResponses())
+            pass
+        return json.dumps({"status": "Success", "InsertionId":msg_id, "Insertion":thisNode.getInsertAck()[msg_id] })
 
     @app.route('/depart', methods=['GET'])
     def depart():
@@ -261,13 +316,15 @@ def create_app(test_config=None):
     def load_data_from_file():
         '''
         Loads data from data directory. File should be named insert.txt
-        Loads data to callee node. Doesnt (yet) partition the data according
-        to their hash(key) to the corresponding nodes.
+        Called only from Bootstrap Node when it joins the network and no other node
+        has joined yet. Initializes Bootstraps DHT with the data from the file.
         '''
         DHT={}
-        import pathlib
+        for i in range(10):
+            DHT[str(i)] = {}
+
         print(pathlib.Path(__file__).parent.absolute())
-        filepath=str(pathlib.Path(__file__).parent.absolute())+"/data/insert.txt"
+        filepath=str(pathlib.Path(__file__).parent.absolute())+"/data/insert1.txt"
         #filepath="/data/insert.txt"
         with open(filepath) as f:
             for line in f:
@@ -277,9 +334,11 @@ def create_app(test_config=None):
                     key = ','.join(key)
                 hashnumber = str(getId(key[0]))
                 if hashnumber in DHT:
-                    DHT[hashnumber].append((key[0], val)) #Value: (name, ip of peer)
+                    #DHT[hashnumber].append((key[0], val)) #Value: (name, ip of peer)
+                    DHT[hashnumber][key[0]]=val
                 else:
-                    DHT[hashnumber] = [(key[0],val)]
+                    #DHT[hashnumber] = [(key[0],val)]
+                    DHT[hashnumber] = {key[0]:val}
 
         thisNode.setDHT(DHT)
         return json.dumps({"status": 'Success', \
