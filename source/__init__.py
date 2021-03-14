@@ -506,6 +506,44 @@ def create_app(test_config=None):
                 "Query":thisNode.getAck()[msg_id], "queryValue": thisNode.getAckValue()[msg_id]})
 
 
+    @app.route('/queryall', methods=['GET'])
+    def query_all():
+        '''
+        Returns every (key, value) pair stored in DHT for every node in the Network
+        '''
+        res = thisNode.query_all()
+        return json.dumps({"status": "Success", \
+                            "result": res})
+
+    @app.route('/add2queryall',methods=['POST'])
+    def add2queryall():
+        queryall_msg_fields = dict(request.get_json())
+        queryallMsg = QueryAllMessage(queryall_msg_fields)
+
+        if thisNode.getAssignedId() == queryall_msg_fields["sender_id"]:
+            # set overlay response as done
+            thisNode.setOverlayResponses(queryall_msg_fields["message_id"], queryall_msg_fields["data"])
+            #print(thisNode.getOverlayResponses())
+            return json.dumps({"status": "Success", \
+                            "msg": f"Query * finished"})
+        else:
+            queryallMsg.update(thisNode.getAssignedId(), thisNode.getDHT())
+            # request on other node for add2overlay
+            requests.post(f"http://{thisNode.getNextIp()}/add2queryall",\
+                            json=queryallMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query * request to {thisNode.getNext()}"})
+
+
+    @app.route('/wait4queryall/<string:msg_id>', methods=['GET'])
+    def wait4queryall(msg_id):
+        while (msg_id not in thisNode.getOverlayResponses()):
+            time.sleep(1)
+            #print(type(msg_id), msg_id)
+            #print(thisNode.getOverlayResponses())
+            pass
+        return json.dumps({"status": "Success", "OverlayId":msg_id, "Overlay":thisNode.getOverlayResponses()[msg_id] })
 
 
     @app.route('/depart', methods=['GET'])

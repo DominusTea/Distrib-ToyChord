@@ -49,6 +49,19 @@ class OverlayMessage(Message):
     def update(self, current_id, current_ip):
         self.data[current_id] = current_ip
 
+class QueryAllMessage(Message):
+    def __init__(self, data_dict=None, msg_id=-1, sender_id=-1, sender_ip=-1, sender_DHT={}, msg="", verbose=False):
+        if data_dict==None:
+            super().__init__(data_dict, msg_id, sender_id, msg, verbose )
+            self.type = "QueryAll"
+            self.data = {sender_id: sender_DHT}
+        else:
+            self.setBasicData(data_dict)
+            self.data = data_dict["data"].copy()
+
+    def update(self, current_id, current_DHT):
+        self.data[current_id] = current_DHT
+
 class InsertionMessage(Message):
     def __init__(self, data_dict=None, msg_id=-1, sender_id=-1, \
                 sender_ip=-1, msg="", verbose=False, key_data=None, val_data=None):

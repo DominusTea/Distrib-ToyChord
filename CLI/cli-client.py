@@ -101,12 +101,20 @@ def delete(key):
 @click.argument('key')
 def query(key):
     if hasLoggedIn:
-        click.echo(f"Attempting to query {key} from the ToyChrod Network")
-        res = requests.post(f"http://{THIS_IP}:{THIS_PORT}/query", \
-                    json={"key_data":key})
+
+        if key=="*":
+            click.echo(f"Attempting to query all (*) from the ToyChrod Network")
+            res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/queryall")
+
+        else:
+            click.echo(f"Attempting to query {key} from the ToyChrod Network")
+            res = requests.post(f"http://{THIS_IP}:{THIS_PORT}/query", \
+                        json={"key_data":key})
         click.echo(res.json())
+
     else:
-        click.echo(f"Must login first (using give_credentials command)")    
+        click.echo(f"Must login first (using give_credentials command)")
+
 
 
 if __name__=="__main__":

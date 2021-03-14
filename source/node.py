@@ -249,9 +249,20 @@ class Node:
 
     def query_all(self):
         '''
-        API request all <key, value> pairs in the DHT
+        API request all <key, value> pairs in the P2P network (for every node)
         '''
-        raise NotImplementedError
+        msg_id = self.getMsgId()
+
+        queryall_msg = QueryAllMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                            sender_DHT=self.DHT, msg="")
+        # begin asking for query * from next ip
+        queryall_req = (requests.post(f"http://{self.next_ip}/add2queryall", json=queryall_msg.__dict__)).json()
+        # wait for response at wait4queryall route
+        queryall_response = (requests.get(f"http://{self.ip}/wait4queryall/{msg_id}")).json()
+
+        return queryall_response
+
+
     def getNext(self):
         '''
         get next node's id
