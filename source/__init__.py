@@ -243,14 +243,27 @@ def create_app(test_config=None):
         insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
 
         msg_key, msg_val = \
-        list(insert_msg_fields["data"].keys())[0], list(insert_msg_fields["data"].values())[0] #{k:v}
+            list(insert_msg_fields["data"].keys())[0], list(insert_msg_fields["data"].values())[0] #{k:v}
 
         hashkey = str(getId(msg_key))
         if hashkey in thisNode.getDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore add/edit current node's DHT
             thisNode.insertToDht(msg_key, hashkey, msg_val)
+            # prepare ack-message's data dictionary
+            ack_dict = insert_msg_fields.copy()
+            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+            # consturct ack message
+            ackMsg = AcknowledgeMessage(ack_dict)
+            # propagate ack message to next id
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_insert_ack/",\
+                            json=ackMsg.__dict__)
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
 
         if thisNode.getAssignedId() == insert_msg_fields["sender_id"]:
-            #print("\x1b[32mMessage dict:\x1b[0m", insert_msg_fields)
+            # this should not be reachable
             msg_id = insert_msg_fields['message_id']
 
             thisNode.setAck(msg_id, True)
@@ -259,15 +272,39 @@ def create_app(test_config=None):
             return json.dumps({"status": "Success", \
                             "msg": f"Insertion finished"})
         else:
+            # message has not reached appropriate node.
+            # Propagate insertion message to next node
+
             insertMsg = InsertionMessage(insert_msg_fields)
             #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
-            # request on other node for add2overlay
             requests.post(f"http://{thisNode.getNextIp()}/propagate_insert/",\
                             json=insertMsg.__dict__)
             # return success on caller
             return json.dumps({"status": "Success", \
                             "msg": f"Forwarded insert request to {thisNode.getNext()}"})
 
+
+    @app.route('/propagate_insert_ack/', methods=['POST'])
+    def propagate_insert_ack():
+        ack_msg_fields = dict(request.get_json())
+        if thisNode.getAssignedId() == ack_msg_fields["sender_id"]:
+            #print("\x1b[32mMessage dict:\x1b[0m", insert_msg_fields)
+            msg_id = ack_msg_fields['message_id']
+
+            thisNode.setAck(msg_id, True)
+            # set overlay response as done
+
+            return json.dumps({"status": "Success", \
+                            "msg": f"Insertion finished"})
+        else:
+            ackMsg = AcknowledgeMessage(ack_msg_fields)
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            # request on other node for add2overlay
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_insert_ack/",\
+                            json=ackMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+            "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
 
 
     @app.route('/wait4insert/<string:msg_id>', methods=['GET'])

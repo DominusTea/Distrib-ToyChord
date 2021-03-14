@@ -59,3 +59,15 @@ class InsertionMessage(Message):
         else:
             self.setBasicData(data_dict)
             self.data = data_dict["data"].copy()
+
+class AcknowledgeMessage(Message):
+    def __init__(self, data_dict=None, msg_id=-1, sender_id=-1, \
+                sender_ip=-1, msg="", verbose=False, ackType="UNK"):
+            if data_dict == None:
+                super().__init__(data_dict, msg_id, sender_id, msg, verbose)
+                self.type = "Ack"
+                self.ack_type = ackType
+            else:
+                self.setBasicData(data_dict)
+                self.ack_type = data_dict["type"]
+                self.type = "Ack"
