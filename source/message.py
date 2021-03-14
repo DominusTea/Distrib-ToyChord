@@ -55,12 +55,7 @@ class InsertionMessage(Message):
         if data_dict == None:
             super().__init__(data_dict, msg_id, sender_id, msg, verbose)
             self.type = "Insert"
-            self.data = {sender_id: sender_ip}
-            self.insert_data = {key_data: val_data}
+            self.data = {key_data: val_data}
         else:
             self.setBasicData(data_dict)
             self.data = data_dict["data"].copy()
-            self.insert_data = data_dict["insert_data"].copy()
-
-    def update(self, current_id, current_ip):
-        self.data[current_id] = current_ip

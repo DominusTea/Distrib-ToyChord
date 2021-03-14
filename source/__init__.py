@@ -243,23 +243,24 @@ def create_app(test_config=None):
         insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
 
         msg_key, msg_val = \
-        list(insert_msg_fields["insert_data"].keys())[0], list(insert_msg_fields["insert_data"].values())[0] #{k:v}
+        list(insert_msg_fields["data"].keys())[0], list(insert_msg_fields["data"].values())[0] #{k:v}
 
-
-        res = thisNode.insert(msg_key, msg_val)
-        if type(res) is not dict:
-            insertionResult = res.json()
-
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getDHT().keys():
+            thisNode.insertToDht(msg_key, hashkey, msg_val)
 
         if thisNode.getAssignedId() == insert_msg_fields["sender_id"]:
+            #print("\x1b[32mMessage dict:\x1b[0m", insert_msg_fields)
+            msg_id = insert_msg_fields['message_id']
+
+            thisNode.setAck(msg_id, True)
             # set overlay response as done
 
-            thisNode.setAck(insert_msg_fields["message_id"], insert_msg_fields["data"])
             return json.dumps({"status": "Success", \
                             "msg": f"Insertion finished"})
         else:
             insertMsg = InsertionMessage(insert_msg_fields)
-            insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
             # request on other node for add2overlay
             requests.post(f"http://{thisNode.getNextIp()}/propagate_insert/",\
                             json=insertMsg.__dict__)
@@ -269,19 +270,20 @@ def create_app(test_config=None):
 
 
 
-    @app.route('/wait4insert/<string:cur_id>/<string:msg_id>', methods=['GET'])
-    def wait4insert(cur_id, msg_id):
+    @app.route('/wait4insert/<string:msg_id>', methods=['GET'])
+    def wait4insert(msg_id):
         '''
         '''
-        while (msg_id not in thisNode.getInsertAck()):
-            print("--------------------------------")
-            print(thisNode.getInsertAck)
-            print("--------------------------------")
+        while (not thisNode.getAck()[msg_id]):
+            # print("--------------------------------")
+            # print(thisNode.getInsertAck)
+            # print("--------------------------------")
             time.sleep(1)
+            print(f"in wait with ack: {thisNode.getAck()}")
             #print(type(msg_id), msg_id)
             #print(thisNode.getOverlayResponses())
             pass
-        return json.dumps({"status": "Success", "InsertionId":msg_id, "Insertion":thisNode.getInsertAck()[msg_id] })
+        return json.dumps({"status": "Success", "InsertionId":msg_id, "Insertion":thisNode.getAck()[msg_id] })
 
     @app.route('/depart', methods=['GET'])
     def depart():

@@ -163,16 +163,18 @@ class Node:
         hashkey = str(getId(key))
         if hashkey in self.getDHT().keys():
             self.insertToDht(key, hashkey, value)
-            wait_req = (requests.get("http://"+self.next_ip+f"/wait4insert/")).json()
-            #return {"status": "Success", \
-            #        "text": f"Successfuly added {key}, {value} in node {self.assigned_id}"}
+            return {"status": "Success", \
+                   "text": f"Successfuly added {key}, {value} in node {self.assigned_id}"}
+
         else:
             msg_id = self.getMsgId()
+            self.setAck(msg_id, False)
+            print("First Node:", self.getAck())
             insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, sender_ip=self.ip, msg="", key_data=key, val_data=value)
             # begin asking for overlay from next ip
             insert_req = (requests.post(f"http://{self.next_ip}/propagate_insert/", json=insert_msg.__dict__)).json()
             # wait for response at wait4overlay route
-            wait_req = (requests.get("http://"+self.next_ip+f"/wait4insert/")).json()
+            wait_req = (requests.get("http://"+self.ip+f"/wait4insert/{msg_id}")).json()
 
         return wait_req
 
@@ -254,9 +256,6 @@ class Node:
 
     def getOverlayResponses(self):
         return self.responses
-
-    def getInsertAck(self):
-        return self.ack
 
     def getAck(self):
         return self.ack
