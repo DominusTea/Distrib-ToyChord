@@ -71,6 +71,8 @@ def print_all():
             click.echo(f"Local node running on ip{THIS_IP}:{THIS_PORT} has DHT:")
             res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/print_all")
             click.echo(res.json())
+        else:
+            click.echo(f"Must login first (using give_credentials command)")
 
 @cli.command()
 @click.argument('key')
@@ -81,6 +83,31 @@ def insert(key, value):
         res = requests.post(f"http://{THIS_IP}:{THIS_PORT}/insert", \
                     json={"key_data":key, "val_data":value})
         click.echo(res.json())
+    else:
+        click.echo(f"Must login first (using give_credentials command)")
+
+@cli.command()
+@click.argument('key')
+def delete(key):
+    if hasLoggedIn:
+        click.echo(f"Attempting to delete {key} from the ToyChrod Network")
+        res = requests.post(f"http://{THIS_IP}:{THIS_PORT}/delete", \
+                    json={"key_data":key})
+        click.echo(res.json())
+    else:
+        click.echo(f"Must login first (using give_credentials command)")
+
+@cli.command()
+@click.argument('key')
+def query(key):
+    if hasLoggedIn:
+        click.echo(f"Attempting to query {key} from the ToyChrod Network")
+        res = requests.post(f"http://{THIS_IP}:{THIS_PORT}/query", \
+                    json={"key_data":key})
+        click.echo(res.json())
+    else:
+        click.echo(f"Must login first (using give_credentials command)")    
+
 
 if __name__=="__main__":
 

@@ -34,6 +34,7 @@ class Node:
         self.msg_id = 0
         self.responses = {}
         self.ack = {}
+        self.ack_value = {}
 
     def clear(self):
 
@@ -60,6 +61,9 @@ class Node:
     def setAck(self, msg_id, msg_val):
         self.ack[msg_id] = msg_val
 
+    def setAckValue(self, msg_id, msg_val):
+        self.ack_value[msg_id] = msg_val
+
     def setOverlayResponses(self, msg_id, msg_val):
         print("a:", msg_id)
         print("type of msg_id:", type(msg_id))
@@ -71,6 +75,19 @@ class Node:
 
     def insertToDht(self, key, hash, val):
         self.DHT[hash][key] = val
+
+    def deleteFromDht(self, key, hash):
+        if key in self.DHT[hash]:
+            self.DHT[hash].pop(key)
+
+    def queryFromDht(self, key, hash):
+        if key in self.DHT[hash]:
+            res = self.DHT[hash][key]
+            # print("\x1b[32mDHT: \x1b[0m", self.DHT)
+            # print("\x1b[32mResult: \x1b[0m", res)
+        else:
+            res ="Not found"
+        return res
 
     def notify_join_prev(self):
         ntf_prev_req = (requests.get("http://"+self.prev_ip+f"/accept_join_next/{self.ip}/{self.assigned_id}")).json()
@@ -171,10 +188,34 @@ class Node:
             self.setAck(msg_id, False)
             print("First Node:", self.getAck())
             insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, sender_ip=self.ip, msg="", key_data=key, val_data=value)
-            # begin asking for overlay from next ip
+            # propagate insertion to next node
             insert_req = (requests.post(f"http://{self.next_ip}/propagate_insert/", json=insert_msg.__dict__)).json()
-            # wait for response at wait4overlay route
+            # wait for response at wait4insert endpoint.
             wait_req = (requests.get("http://"+self.ip+f"/wait4insert/{msg_id}")).json()
+
+        return wait_req
+
+    def delete(self, key):
+        '''
+        API request to delete pair with given key. If it doesnt exists
+        then nothing happens
+        '''
+        hashkey = str(getId(key))
+        if hashkey in self.getDHT().keys():
+            self.deleteFromDht(key, hashkey)
+            return {"status": "Success", \
+                   "text": f"Successfuly removed pair with key: {key} from node: {self.assigned_id}"}
+
+        else:
+            # current node not responsible for hashKey. Construct Delete Message
+            msg_id = self.getMsgId()
+            self.setAck(msg_id, False)
+            print("First Node:", self.getAck())
+            delete_msg = DeletionMessage(msg_id=msg_id, sender_id=self.assigned_id, sender_ip=self.ip, msg="", key_data=key)
+            # propagate deletion to next node
+            deletion_req = (requests.post(f"http://{self.next_ip}/propagate_delete/", json=delete_msg.__dict__)).json()
+            # wait for response at wait4delete route
+            wait_req = (requests.get("http://"+self.ip+f"/wait4delete/{msg_id}")).json()
 
         return wait_req
 
@@ -184,7 +225,28 @@ class Node:
         key stored in a node's hash table
 
         '''
-        raise NotImplementedError
+        hashkey = str(getId(key))
+        if hashkey in self.getDHT().keys():
+            queryVal = self.queryFromDht(key, hashkey)
+            return {"status": "Success", \
+                   "text": f"Successful query for pair with key: {key} from node: {self.assigned_id}. Result: {queryVal}", \
+                   "queryValue": {queryVal}}
+
+        else:
+            # current node not responsible for hashKey. Construct Delete Message
+            msg_id = self.getMsgId()
+            # set ack to False, since node has not received ack for request
+            self.setAck(msg_id, False)
+            # set ackvalue to None, since node has not received ack for request
+            self.setAckValue(msg_id, None)
+            query_msg = QueryMessage(msg_id=msg_id, sender_id=self.assigned_id, sender_ip=self.ip, msg="", key_data=key)
+            # propagate query to next node
+            query_req = (requests.post(f"http://{self.next_ip}/propagate_query/", json=query_msg.__dict__)).json()
+            # wait for response at wait4query route
+            wait_req = (requests.get("http://"+self.ip+f"/wait4query/{msg_id}")).json()
+
+        return wait_req
+
     def query_all(self):
         '''
         API request all <key, value> pairs in the DHT
@@ -259,6 +321,9 @@ class Node:
 
     def getAck(self):
         return self.ack
+
+    def getAckValue(self):
+        return self.ack_value
 
 class BootstrapNode(Node):
     def __init__(self, ip):

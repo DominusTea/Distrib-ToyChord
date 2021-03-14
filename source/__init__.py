@@ -262,15 +262,15 @@ def create_app(test_config=None):
             return  json.dumps({"status": "Success", \
                             "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
 
-        if thisNode.getAssignedId() == insert_msg_fields["sender_id"]:
-            # this should not be reachable
-            msg_id = insert_msg_fields['message_id']
-
-            thisNode.setAck(msg_id, True)
-            # set overlay response as done
-
-            return json.dumps({"status": "Success", \
-                            "msg": f"Insertion finished"})
+        # if thisNode.getAssignedId() == insert_msg_fields["sender_id"]:
+        #     # this should not be reachable
+        #     msg_id = insert_msg_fields['message_id']
+        #
+        #     thisNode.setAck(msg_id, True)
+        #     # set overlay response as done
+        #
+        #     return json.dumps({"status": "Success", \
+        #                     "msg": f"Insertion finished"})
         else:
             # message has not reached appropriate node.
             # Propagate insertion message to next node
@@ -306,7 +306,6 @@ def create_app(test_config=None):
             return json.dumps({"status": "Success", \
             "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
 
-
     @app.route('/wait4insert/<string:msg_id>', methods=['GET'])
     def wait4insert(msg_id):
         '''
@@ -321,6 +320,193 @@ def create_app(test_config=None):
             #print(thisNode.getOverlayResponses())
             pass
         return json.dumps({"status": "Success", "InsertionId":msg_id, "Insertion":thisNode.getAck()[msg_id] })
+
+    @app.route('/delete', methods=['POST'])
+    def delete():
+        '''
+        Starts deletion of pair with given key
+        '''
+
+        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        msg_key= insert_msg_fields["key_data"]
+        insertionResult = thisNode.delete(msg_key)
+
+        return json.dumps({"status": "Success", \
+                            "msg": f"Successful delete of pair with key {msg_key}"})
+
+    @app.route('/propagate_delete/', methods=['POST'])
+    def propagate_delete():
+        '''
+        Propagates the deletion message
+        '''
+        delete_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+
+        msg_key = delete_msg_fields["data"]
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore delete from current node's DHT
+            thisNode.deleteFromDht(msg_key, hashkey)
+            # prepare ack-message's data dictionary
+            ack_dict = delete_msg_fields.copy()
+            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+            # consturct ack message
+            ackMsg = AcknowledgeMessage(ack_dict)
+            # propagate ack message to next id
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_delete_ack/",\
+                            json=ackMsg.__dict__)
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded delete acknowledge to {thisNode.getNext()}"})
+
+
+        else:
+            # message has not reached appropriate node.
+            # Propagate insertion message to next node
+
+            deleteMsg = DeletionMessage(delete_msg_fields)
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_delete/",\
+                            json=deleteMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded deletion request to {thisNode.getNext()}"})
+
+    @app.route('/propagate_delete_ack/', methods=['POST'])
+    def propagate_delete_ack():
+        ack_msg_fields = dict(request.get_json())
+        if thisNode.getAssignedId() == ack_msg_fields["sender_id"]:
+            #print("\x1b[32mMessage dict:\x1b[0m", insert_msg_fields)
+            msg_id = ack_msg_fields['message_id']
+
+            thisNode.setAck(msg_id, True)
+            # set overlay response as done
+
+            return json.dumps({"status": "Success", \
+                            "msg": f"Deletion finished"})
+        else:
+            ackMsg = AcknowledgeMessage(ack_msg_fields)
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            # request on other node for add2overlay
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_delete_ack/",\
+                            json=ackMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+            "msg": f"Forwarded deletion acknowledge to {thisNode.getNext()}"})
+
+
+    @app.route('/wait4delete/<string:msg_id>', methods=['GET'])
+    def wait4delete(msg_id):
+        '''
+        Endpoint that waits for deletion
+        '''
+        while (not thisNode.getAck()[msg_id]):
+            time.sleep(1)
+            print(f"in wait with ack: {thisNode.getAck()}")
+            pass
+
+        return json.dumps({"status": "Success", "DeletionId":msg_id, "Deletion":thisNode.getAck()[msg_id] })
+
+
+    @app.route('/query', methods=['POST'])
+    def query():
+        '''
+        Starts query for given key
+        '''
+
+        query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        msg_key= query_msg_fields["key_data"]
+        queryResult = thisNode.query(msg_key)
+        print("DSJDO-SF-O-SO-S-NSLG-NLKGNSLKGNSLKGNSL-KGNSGNSLGNSLG-NSLGNLSGSLG-NSLKNLKGNS-LKGNSLKG-NSLK-GNLKSGNL")
+        print("\x1b[33mResult:\x1b[0m", queryResult)
+
+        return json.dumps({"status": "Success", \
+                            "msg": f"Successful query result for key {msg_key} is value: {queryResult['queryValue']}"})
+
+
+    @app.route('/propagate_query/', methods=['POST'])
+    def propagate_query():
+        '''
+        Propagates the deletion message
+        '''
+        query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+
+        msg_key = query_msg_fields["data"]
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore answer query from current node's DHT
+            queryValue = thisNode.queryFromDht(msg_key, hashkey)
+            # prepare ack-message's data dictionary
+            ack_dict = query_msg_fields.copy()
+            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+            ack_dict["ack_result"] = queryValue
+            # consturct ack message
+            ackMsg = AcknowledgeMessage(ack_dict)
+            #print("\x1b[31mDict:\x1b[0m", ackMsg.__dict__)
+            # propagate ack message to next id
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_ack/",\
+                            json=ackMsg.__dict__)
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query acknowledge to {thisNode.getNext()}"})
+
+        else:
+            # message has not reached appropriate node.
+            # Propagate query message to next node
+            queryMsg = QueryMessage(query_msg_fields)
+
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query/",\
+                            json=queryMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query request to {thisNode.getNext()}"})
+
+
+    @app.route('/propagate_query_ack/', methods=['POST'])
+    def propagate_query_ack():
+        ack_msg_fields = dict(request.get_json())
+        #print("\x1b[33mAck Dict\x1b[0m:", ack_msg_fields)
+        if thisNode.getAssignedId() == ack_msg_fields["sender_id"]:
+            #print("\x1b[32mMessage dict:\x1b[0m", insert_msg_fields)
+            msg_id = ack_msg_fields['message_id']
+            #print("!!!!!!!!!!!!1ack_msg_filesd = ",ack_msg_fields)
+            res = ack_msg_fields['ack_result']
+            thisNode.setAck(msg_id, True)
+            thisNode.setAckValue(msg_id, res)
+            # set overlay response as done
+
+            return json.dumps({"status": "Success", \
+                            "msg": f"Query process finished"})
+        else:
+            #print("\x1b[35mAck Dict\x1b[0m:", ack_msg_fields)
+            ackMsg = AcknowledgeMessage(ack_msg_fields)
+
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            # request on other node for add2overlay
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_ack/",\
+                            json=ackMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+            "msg": f"Forwarded query acknowledge to {thisNode.getNext()}"})
+
+    @app.route('/wait4query/<string:msg_id>', methods=['GET'])
+    def wait4query(msg_id):
+        '''
+        Endpoint that waits for deletion
+        '''
+        while (not thisNode.getAck()[msg_id]):
+            time.sleep(1)
+            print(f"in wait with ack: {thisNode.getAck()}")
+            pass
+
+        return json.dumps({"status": "Success", "QueryId":msg_id, \
+                "Query":thisNode.getAck()[msg_id], "queryValue": thisNode.getAckValue()[msg_id]})
+
+
+
 
     @app.route('/depart', methods=['GET'])
     def depart():
