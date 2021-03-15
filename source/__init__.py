@@ -40,10 +40,11 @@ def create_app(test_config=None):
 
     print(app.config["IS_BOOTSTRAP"])
     if app.config["IS_BOOTSTRAP"]:
-        thisNode=BootstrapNode(app.config["THIS_IP"])
+        thisNode=BootstrapNode(app.config["THIS_IP"], app.config["N_REPLICAS"])
     else:
         thisNode =Node(app.config["THIS_IP"],\
                         app.config["BOOTSTRAP_IP"],\
+                        app.config["N_REPLICAS"],\
                         app.config["IS_BOOTSTRAP"])
 
     # ensure the instance folder exists
@@ -56,6 +57,11 @@ def create_app(test_config=None):
     @app.route('/hello')
     def hello():
         return 'Hello, World!'+str(app.config["BOOTSTRAP_IP"]+ " is boot="+app.config["IS_BOOTSTRAP"])
+
+    @app.route('/updateOverlay', methods=['GET'])
+    def updateOverlay():
+        res= thisNode.updateOverlay()
+        return json.dumps({"status": res["status"]})
 
     @app.route('/join', methods=['GET'])
     def join():
@@ -95,7 +101,7 @@ def create_app(test_config=None):
                                 "msg": msg, \
                                 })
         else:
-            joinee_id, prev_ip, next_ip = thisNode.check_join(joinee_ip)
+            joinee_id, prev_ip, next_ip, next_nodes, prev_nodes, overlay = thisNode.check_join(joinee_ip)
 
             status="Success"
             msg=f"Join was successful with id: {joinee_id}"
@@ -105,6 +111,9 @@ def create_app(test_config=None):
                                 "assigned_position": joinee_id,\
                                 "prev_ip": prev_ip,\
                                 "next_ip": next_ip,\
+                                "replicas": next_nodes,\
+                                "prev_nodes": prev_nodes,\
+                                "overlay": overlay
                                 })
 
     @app.route('/accept_join_next/<string:next_ip>/<string:next_id>')
@@ -564,7 +573,15 @@ def create_app(test_config=None):
         '''
         prints caller whole DHT
         '''
-        return json.dumps({"dict":thisNode.getDHT(), "keys":sorted(list(thisNode.getDHT().keys()))})
+        if app.config["N_REPLICAS"] <2:
+            return json.dumps({"dict":thisNode.getDHT(),\
+             "keys":sorted(list(thisNode.getDHT().keys()))})
+        else:
+            return json.dumps({"DHT":thisNode.getDHT(), \
+                                "repl_DHT": thisNode.getReplDHT(), \
+                            "keys":sorted(list(thisNode.getDHT().keys())), \
+                                "repl_keys": sorted(list(thisNode.getReplDHT().keys()))})
+
     @app.route('/delete_all', methods=['GET'])
     def delete_all():
         '''
@@ -574,6 +591,48 @@ def create_app(test_config=None):
         tmp.clear()
         return json.dumps({"status": 'Success', \
                             })
+    @app.route('/get_DHT', methods=['GET'])
+    def get_DHT():
+        return json.dumps({"DHT":thisNode.getDHT()})
+
+    @app.route('/delete_from_repl_DHT/<string:id>/<string:n>', methods=['POST'])
+    def delete_from_repl_DHT(id, n):
+        '''
+        n: appropriate number of loops
+        id: caller's node id.
+        '''
+        # get overlay from message
+        overlay = dict(request.get_json())
+
+        if len(overlay) != 2:
+        # get current node's repl_DHT
+
+            curr_repl_DHT = thisNode.getReplDHT()
+            print("\x1b[33mOverlay\x1b[0m:", overlay)
+            # find keys to delete from rpl_DHT
+            next_caller_node = overlay[id]
+            temp = next_caller_node
+            for i in range(int(n)-2):
+                temp = overlay[temp]
+            print("temp type is", temp, type(temp))
+            print("curr repl dht is ", curr_repl_DHT)
+            curr_repl_DHT.pop(str(temp)) #apo to temp 8eloume na paroume to DHT tou kai na kanoume
+            # pop sto curr_replDHT ta keys tou dht tou temp
+
+        return json.dumps({"status":"Success"})
+
+    @app.route('/insert_me_to_your_repl_DHT' ,methods=['POST'])
+    def insert_me_to_your_repl_DHT():
+        '''
+        merges sent DHT to callee's repl_DHT
+        '''
+        # get inserted_DHT
+        inserted_DHT = dict(request.get_json())
+        print("augaugaugaugauguagua", thisNode.getReplDHT(), inserted_DHT, merge_dict(thisNode.getReplDHT(), inserted_DHT) )
+        thisNode.setReplDHT(merge_dict(thisNode.getReplDHT(), inserted_DHT))
+        return json.dumps({"status": "Success"})
+
+
 
     @app.route('/load_data_from_file', methods=['GET'])
     def load_data_from_file():
@@ -587,7 +646,7 @@ def create_app(test_config=None):
             DHT[str(i)] = {}
 
         print(pathlib.Path(__file__).parent.absolute())
-        filepath=str(pathlib.Path(__file__).parent.absolute())+"/data/insert1.txt"
+        filepath=str(pathlib.Path(__file__).parent.absolute())+"/data/insert.txt"
         #filepath="/data/insert.txt"
         with open(filepath) as f:
             for line in f:

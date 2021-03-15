@@ -3,6 +3,7 @@ import requests
 import json
 import random
 from source.message import *
+from source.lib import *
 
 '''
 Contains code for node class
@@ -17,7 +18,7 @@ class Node:
     '''
     orismoi
     '''
-    def __init__(self, ip, BOOTSTRAP_IP, isBootstrap=False, verbose=True):
+    def __init__(self, ip, BOOTSTRAP_IP, n_replicas=1, isBootstrap=False, verbose=True):
         '''initializations'''
         if(verbose):
             print(f"Created node with ip: {ip}, bootstrap ip: {BOOTSTRAP_IP}, isBootstrap={isBootstrap}")
@@ -35,6 +36,11 @@ class Node:
         self.responses = {}
         self.ack = {}
         self.ack_value = {}
+        self.n_replicas = n_replicas
+        if self.n_replicas > 1:
+            self.repl_DHT = {} # key: hashkey, value: val (dummy). Data replicated from other nodes.
+            self.replicas = {} # key: id, value: ip for the node's replicas.
+            self.prev_nodes = {} #key: id, value ip for the node's previous nodes
 
     def clear(self):
 
@@ -57,6 +63,9 @@ class Node:
 
     def setDHT(self,dht_dict):
         self.DHT = dht_dict.copy()
+
+    def setReplDHT(self, repl_dht_dict):
+        self.repl_DHT = repl_dht_dict.copy()
 
     def setAck(self, msg_id, msg_val):
         self.ack[msg_id] = msg_val
@@ -107,8 +116,36 @@ class Node:
         ntf_next_req = (requests.post("http://"+self.next_ip+f"/accept_depart_prev/{self.prev_ip}/{self.prev_id}",\
                         json=self.DHT)).json()
 
-    def getBootstrap(self):
-        return self.isBootstrap
+    def notify_repl_next(self):
+        '''
+        notify the k-1 next neighbours to get the appropriate keys
+        If not using replicas, this function doesn't do anything
+        '''
+        if self.n_replicas > 1:
+            # this is equivalent to replicas!={}
+            # that is, the Network doesnt use replicas
+            for repl_ip in self.replicas.values():
+                # get replicas DHT
+                replicas_DHT = (requests.get("http://"+repl_ip+"/get_DHT")).json()["DHT"]
+                # and merge it with current node's repl_DHT
+                self.repl_DHT = merge_dict(self.repl_DHT, replicas_DHT)
+
+    def notify_repl_prev(self, overlay):
+        '''
+        notify the k-1 prev neighbours to get the appropriate keys.
+        If not using replicas, this function doesn't do anything.
+        '''
+
+        if self.n_replicas > 1:
+            counter = list(range(self.n_replicas, 0, -1))
+            for i, repl_ip in enumerate(self.prev_nodes.values()):
+                # notify previous nodes to delete appropriate keys from their repl_DHT
+                # since other nodes replicate them now (after a join)
+                req = (requests.post("http://"+repl_ip+f"/delete_from_repl_DHT/{self.assigned_id}/{counter[i]}", json=overlay)).json()
+                add = (requests.post("http://"+repl_ip+f"/insert_me_to_your_repl_DHT", json=self.DHT)).json()
+
+
+
 
     def join(self):
         '''
@@ -119,6 +156,8 @@ class Node:
         if self.isBootstrap:
             self.assigned_id = getId(self.ip)
             self.id_ip_dict[self.assigned_id] = self.ip
+            self.overlay_dict= {str(self.assigned_id):None}
+            self.reverse_overlay_dict = {str(self.assigned_id):None}
 
             print("joined with assigned id", self.assigned_id)
             # load data from local directory. ONLY FOR TESTING DELETE LATER
@@ -136,12 +175,21 @@ class Node:
             self.next_ip = join_req["next_ip"]
             self.prev_id = getId(join_req["prev_ip"])
             self.next_id = getId(join_req["next_ip"])
+            self.replicas = join_req["replicas"]
+            self.prev_nodes = join_req["prev_nodes"]
             self.assigned_id = join_req["assigned_position"]
+            overlay = join_req["overlay"]
             print("joined with assigned id", self.assigned_id, "prev id", \
                 self.prev_id, "next id", self.next_id)
 
+            # notify previous and next node. Get corresponding DHTs.
             self.notify_join_prev()
             self.notify_join_next()
+
+            # notify previous and next to refresh their repl_DHT and update current node's repl_DHT
+            self.notify_repl_next()
+            self.notify_repl_prev(overlay)
+
 
             return {"status": "Success", \
                     "text": f"Joined with prev: {self.prev_ip}, next: {self.next_ip}", \
@@ -263,6 +311,15 @@ class Node:
         return queryall_response
 
 
+    def getBootstrap(self):
+        return self.isBootstrap
+
+    def get_n_replicas(self):
+        '''
+        returns number of replicas
+        '''
+        return self.n_replicas
+
     def getNext(self):
         '''
         get next node's id
@@ -298,9 +355,21 @@ class Node:
 
     def getDHT(self):
         '''
-        get DHT keys from local Node
+        get DHT  from local Node
         '''
         return self.DHT
+
+    def getReplDHT(self):
+        '''
+        get Replica DHT from local Node
+        '''
+        return self.repl_DHT
+
+    def getTotalDHT(self):
+        '''
+        Returns DHT merged with replica DHT.
+        '''
+        return merge_dict(self.DHT, self.repl_DHT)
 
     def getMsgId(self):
         '''
@@ -337,9 +406,11 @@ class Node:
         return self.ack_value
 
 class BootstrapNode(Node):
-    def __init__(self, ip):
-        super().__init__(ip, ip, True)
+    def __init__(self, ip, n_replicas):
+        super().__init__(ip, ip, n_replicas, True)
         self.id_ip_dict = {}
+        self.overlay_dict = {} # key: node_id, value: node's next id. Following "next" order
+        self.reverse_overlay_dict={} # key: node_id, value: node's prev id. Following "prev" order
         for i in range(10):
             self.DHT[str(i)] = {}
 
@@ -357,13 +428,43 @@ class BootstrapNode(Node):
 
         keys_in_dict = sorted(list(self.id_ip_dict.keys()))
         self_index_in_dict = keys_in_dict.index(joinee_id)
-
+        # get previous nodes ips, ids
         prev_id = keys_in_dict[(self_index_in_dict -1)%len(keys_in_dict)]
         next_id = keys_in_dict[(self_index_in_dict +1)%len(keys_in_dict)]
         prev_ip = self.id_ip_dict[prev_id]
         next_ip = self.id_ip_dict[next_id]
+        # update overlay dict
+        self.overlay_dict[str(joinee_id)] = str(next_id)
+        self.reverse_overlay_dict[str(joinee_id)] = str(prev_id)
 
-        return joinee_id, prev_ip, next_ip
+        if len(self.overlay_dict) == 2:
+            self.overlay_dict[str(next_id)] = str(joinee_id)
+            self.reverse_overlay_dict[str(prev_id)] = str(joinee_id)
+        else:
+            self.overlay_dict[str(prev_id)] = str(joinee_id)
+            self.reverse_overlay_dict[str(next_id)] = str(joinee_id)
+
+        print("\x1b[33mOverlay\x1b[0m:", self.overlay_dict)
+        print("\x1b[33mId-Ip\x1b[0m:", self.id_ip_dict)
+        print("\x1b[33mJoinee\x1b[0m:", joinee_id, type(joinee_id))
+
+
+        # if Network uses replicas:
+        if self.n_replicas > 1:
+            # find n_replicas-1 next consequent nodes ( to be replicated by callee node)
+            n_next_nodes = get_n_consequent(self.overlay_dict, self.id_ip_dict,\
+                                        self.n_replicas-1, str(joinee_id))
+            # find n_replicas-1 prev consequent nodes ( that may have to update their repl_DHT)
+            n_prev_nodes = get_n_consequent(self.reverse_overlay_dict, self.id_ip_dict, \
+                                        self.n_replicas-1, str(joinee_id))
+
+        else:
+            n_next_nodes = {}
+            n_prev_nodes = {}
+
+        return joinee_id, prev_ip, next_ip, n_next_nodes, n_prev_nodes, self.overlay_dict
+
+
 
     def get_id_ip_dict(self):
         return self.id_ip_dict
