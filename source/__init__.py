@@ -82,11 +82,20 @@ def create_app(test_config=None):
         while(False):
             pass #maybe stall command later
 
-        id_ip_dict = thisNode.get_id_ip_dict()
-        id_ip_dict.pop(int(departee_id))
+        if not(app.config["IS_BOOTSTRAP"]):
+            status="Error"
+            msg="Not eligible for checking depart request. Try again"
+            print(msg)
+            return json.dumps({"status": status, \
+                                "msg": msg, \
+                                })
+
+        n_prev_nodes, overlay = thisNode.check_depart(departee_id)
 
         return json.dumps({"status": "Success",\
-                        "text": f"successfuly departed node with IP: {departee_id}"})
+                        "text": f"successfuly departed node with IP: {departee_id}", \
+                        "prev_nodes": n_prev_nodes, \
+                        "overlay": overlay})
 
     @app.route('/check_join/<string:joinee_ip>', methods=['GET'])
     def check_join(joinee_ip):
@@ -595,28 +604,106 @@ def create_app(test_config=None):
     def get_DHT():
         return json.dumps({"DHT":thisNode.getDHT()})
 
+    # @app.route('/delete_from_repl_DHT/<string:id>/<string:n>', methods=['POST'])
+    # def delete_from_repl_DHT(id, n):
+    #     '''
+    #     After a node is inserted into the Chord Network and replication is enabled
+    #     n: appropriate number of loops
+    #     id: caller's node id.
+    #     '''
+    #     # get overlay from message
+    #     overlay = dict(request.get_json())
+    #
+    #     if len(overlay) != 2:
+    #         # get current node's repl_DHT
+    #
+    #
+    #         curr_repl_DHT = thisNode.getReplDHT()
+    #         print("\x1b[33mOverlay\x1b[0m:", overlay)
+    #         # find keys to delete from rpl_DHT
+    #         next_caller_node = overlay[id]
+    #         temp = next_caller_node
+    #         print("n:", int(n))
+    #         if int(n) == 2:
+    #             flag_start = temp
+    #         for i in range(int(n)-2):
+    #             if i == int(n)-4:
+    #                 flag_start = temp
+    #             if i == 0 and int(n)==3:
+    #                 flag_start = temp
+    #             temp = overlay[temp]
+    #
+    #         flag_end = temp
+    #
+    #         if thisNode.get_n_replicas() == 2:
+    #             flag_start = id
+    #             flag_end = overlay[id]
+    #
+    #         length = (int(flag_end) - int(flag_start)) % 10
+    #         keys = [(i+int(flag_start)) % 10 for i in range(1, length+1)]
+    #
+    #         # if int(n)==2:
+    #             # keys = [temp]
+    #         for key in keys:
+    #             if str(key) in curr_repl_DHT:
+    #                 curr_repl_DHT.pop(str(key))
+    #         #print("temp type is", temp, type(temp))
+    #         #print("curr repl dht is ", curr_repl_DHT)
+    #         print("\x1b[35mThis node is:\x1b[0m", thisNode.getAssignedId())
+    #         print("\x1b[35mEnter node:\x1b[0m", id)
+    #         print("\x1b[32mCalculated keys:\x1b[0m", keys)
+    #         print("\x1b[32mDHT keys:\x1b[0m", curr_repl_DHT.keys())
+    #         #curr_repl_DHT.pop(str(temp)) #apo to temp 8eloume na paroume to DHT tou kai na kanoume
+    #         # pop sto curr_replDHT ta keys tou dht tou temp
+    #
+    #     return json.dumps({"status":"Success"})
+
     @app.route('/delete_from_repl_DHT/<string:id>/<string:n>', methods=['POST'])
     def delete_from_repl_DHT(id, n):
         '''
+        After a node is inserted into the Chord Network and replication is enabled
+        previous nodes need to delete some keys from their replica DHT.
+        Therefore newly inserted node calls delete_from_repl_DHT on some of its previous nodes
         n: appropriate number of loops
         id: caller's node id.
         '''
         # get overlay from message
         overlay = dict(request.get_json())
 
+        # if the network consists of 2 nodes then do nothing
         if len(overlay) != 2:
-        # get current node's repl_DHT
-
+            # get current node's repl_DHT
             curr_repl_DHT = thisNode.getReplDHT()
-            print("\x1b[33mOverlay\x1b[0m:", overlay)
-            # find keys to delete from rpl_DHT
-            next_caller_node = overlay[id]
-            temp = next_caller_node
-            for i in range(int(n)-2):
+
+            # flag_end is the node whose DHT keys should be deleted
+            # flag_start is flag_end's previous node
+            # It is Initialized from the node that enters the network
+            # n is the appropriate number of repetitions, considering id node as start
+            temp = id
+            flag_start = id
+            for i in range(int(n)-1):
                 temp = overlay[temp]
-            print("temp type is", temp, type(temp))
-            print("curr repl dht is ", curr_repl_DHT)
-            curr_repl_DHT.pop(str(temp)) #apo to temp 8eloume na paroume to DHT tou kai na kanoume
+                if i == int(n)-3:
+                    flag_start = temp
+
+            flag_end = temp
+
+            # find keys to delete from rpl_DHT
+            length = (int(flag_end) - int(flag_start)) % 10
+            keys = [(i+int(flag_start)) % 10 for i in range(1, length+1)]
+
+            for key in keys:
+                if str(key) in curr_repl_DHT:
+                    curr_repl_DHT.pop(str(key))
+
+            # print("\x1b[33mOverlay\x1b[0m:", overlay)
+            #print("temp type is", temp, type(temp))
+            #print("curr repl dht is ", curr_repl_DHT)
+            print("\x1b[35mThis node is:\x1b[0m", thisNode.getAssignedId())
+            print("\x1b[35mEnter node:\x1b[0m", id)
+            print("\x1b[32mCalculated keys:\x1b[0m", keys)
+            print("\x1b[32mDHT keys:\x1b[0m", curr_repl_DHT.keys())
+            #apo to temp 8eloume na paroume to DHT tou kai na kanoume
             # pop sto curr_replDHT ta keys tou dht tou temp
 
         return json.dumps({"status":"Success"})
@@ -628,9 +715,35 @@ def create_app(test_config=None):
         '''
         # get inserted_DHT
         inserted_DHT = dict(request.get_json())
-        print("augaugaugaugauguagua", thisNode.getReplDHT(), inserted_DHT, merge_dict(thisNode.getReplDHT(), inserted_DHT) )
+        # print("augaugaugaugauguagua", thisNode.getReplDHT(), inserted_DHT, merge_dict(thisNode.getReplDHT(), inserted_DHT) )
         thisNode.setReplDHT(merge_dict(thisNode.getReplDHT(), inserted_DHT))
         return json.dumps({"status": "Success"})
+
+    @app.route('/insert_to_repl_DHT', methods=['POST'])
+    def insert_to_repl_DHT():
+        '''
+        Inserts to repl DHT the DHT of the departee's next node
+        '''
+        # get dht from message
+        inserted_DHT = dict(request.get_json())
+        thisNode.setReplDHT(merge_dict(thisNode.getReplDHT(), inserted_DHT))
+        return json.dumps({"status": "Success"})
+
+    @app.route('/update/<string:departee_id>', methods=['GET'])
+    def update(departee_id):
+        '''
+        Get the next next node's DHT
+        '''
+        print("\x1b[36mDepartee ID:\x1b[0m", departee_id)
+        flag_next = thisNode.overlay_dict[departee_id]
+        flag_prev = thisNode.reverse_overlay_dict[departee_id]
+        thisNode.overlay_dict.pop(departee_id)
+        thisNode.overlay_dict[flag_prev] = flag_next
+        thisNode.reverse_overlay_dict.pop(departee_id)
+        thisNode.reverse_overlay_dict[flag_next] = flag_prev
+
+        return json.dumps({"status":"Success"})
+
 
 
 

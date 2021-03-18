@@ -50,7 +50,9 @@ def overlay():
 
 @cli.command()
 def join():
+    global hasJoined
     if hasLoggedIn:
+        hasJoined = True
         click.echo(f"Attempting to join ToyChord P2P Network with ip = {THIS_IP}, port={THIS_PORT}, on bootstrap = {BOOTSTRAP_IP}")
         res = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/join")).json()
         click.echo(f"Successfully joined with id {res['assigned_position']}")
@@ -60,11 +62,13 @@ def join():
     # pass
 @cli.command()
 def depart():
-    if hasLoggedIn:
+    global hasJoined
+    if hasLoggedIn and hasJoined:
+        hasJoined=False
         click.echo(f"Attempting to depart from ToyChrod P2P Network")
         res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/depart")
     else:
-        click.echo(f"Must login first (using give_credentials command)")
+        click.echo(f"Must login first (using give_credentials command) and join")
 @cli.command()
 def print_all():
         if hasLoggedIn:
@@ -119,8 +123,9 @@ def query(key):
 
 if __name__=="__main__":
 
-    global BOOTSTRAP_IP, THIS_IP, THIS_PORT, hasLoggedIn
+    global BOOTSTRAP_IP, THIS_IP, THIS_PORT, hasLoggedIn, hasJoined
     hasLoggedIn=False
+    hasJoined=False
 
     print("\x1b[36m~~~~~~~~~~~~~~~~~~Distrib ToyChord (CLI)~~~~~~~~~~~~~~~~~~\x1b[0m\n.\
             Developed by Team Rocket . Prepare for trouble and make it double!\n \
