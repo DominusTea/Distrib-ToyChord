@@ -11,6 +11,7 @@ from source.lib import merge_dict
 from source.message import *
 import time
 import pathlib
+import threading
 
 def create_app(test_config=None):
     # create and configure the app
@@ -40,12 +41,15 @@ def create_app(test_config=None):
 
     print(app.config["IS_BOOTSTRAP"])
     if app.config["IS_BOOTSTRAP"]:
-        thisNode=BootstrapNode(app.config["THIS_IP"], app.config["N_REPLICAS"])
+        thisNode=BootstrapNode(app.config["THIS_IP"], \
+                                app.config["N_REPLICAS"], \
+                                app.config["POLICY"])
     else:
         thisNode =Node(app.config["THIS_IP"],\
                         app.config["BOOTSTRAP_IP"],\
                         app.config["N_REPLICAS"],\
-                        app.config["IS_BOOTSTRAP"])
+                        app.config["IS_BOOTSTRAP"], \
+                        app.config["POLICY"])
 
     # ensure the instance folder exists
     try:
@@ -53,15 +57,14 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    #################################################################################################################
+    ####################################### CLI COMMANDS ############################################################
+    #################################################################################################################
+
     # a simple page that says hello
     @app.route('/hello')
     def hello():
         return 'Hello, World!'+str(app.config["BOOTSTRAP_IP"]+ " is boot="+app.config["IS_BOOTSTRAP"])
-
-    @app.route('/updateOverlay', methods=['GET'])
-    def updateOverlay():
-        res= thisNode.updateOverlay()
-        return json.dumps({"status": res["status"]})
 
     @app.route('/join', methods=['GET'])
     def join():
@@ -77,25 +80,112 @@ def create_app(test_config=None):
 
         return join_req
 
-    @app.route('/check_depart/<string:departee_id>',methods=['GET'])
-    def check_depart(departee_id):
-        while(False):
-            pass #maybe stall command later
+    @app.route('/overlay',methods=['GET'])
+    def overlay():
+        '''
+        Returns overlay of network
+        '''
+        networkOverlay = thisNode.getOverlay()
+        return json.dumps({"status": "Success", \
+                            "Overlay": networkOverlay})
 
-        if not(app.config["IS_BOOTSTRAP"]):
-            status="Error"
-            msg="Not eligible for checking depart request. Try again"
-            print(msg)
-            return json.dumps({"status": status, \
-                                "msg": msg, \
-                                })
+    @app.route('/insert', methods=['POST'])
+    def insert():
+        '''
+        Starts insertion of {key,value} pair
+        '''
 
-        n_prev_nodes, overlay = thisNode.check_depart(departee_id)
+        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        msg_key, msg_val = insert_msg_fields["key_data"], insert_msg_fields["val_data"]
+        if thisNode.policy == "EVENTUAL":
+            insertionResult = thisNode.insert_eventual(msg_key, msg_val)
+        elif thisNode.policy == "CHAIN":
+            insertionResult = thisNode.insert_chain(msg_key, msg_val)
+        else:
+            insertionResult = thisNode.insert(msg_key, msg_val)
 
-        return json.dumps({"status": "Success",\
-                        "text": f"successfuly departed node with IP: {departee_id}", \
-                        "prev_nodes": n_prev_nodes, \
-                        "overlay": overlay})
+        return json.dumps({"status": "Success", \
+                            "msg": f"Successful insertion of data ({msg_key}, {msg_val})"})
+
+    @app.route('/depart', methods=['GET'])
+    def depart():
+        '''
+        safely departs from P2P network.
+        Every local node should call it before departing
+        '''
+        depart_req = thisNode.depart()
+
+        if depart_req["status"] == 'Error':
+            print("error in departing")
+
+        return depart_req
+
+
+    @app.route('/delete', methods=['POST'])
+    def delete():
+        '''
+        Starts deletion of pair with given key.
+        '''
+
+        delete_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        msg_key= delete_msg_fields["key_data"]
+        if thisNode.policy == "EVENTUAL":
+            deletionResult = thisNode.delete_eventual(msg_key)
+        elif thisNode.policy == "CHAIN":
+            pass
+        else:
+            deletionResult = thisNode.delete(msg_key)
+        return json.dumps({"status": "Success", \
+                            "msg": f"Successful delete of key {msg_key}"})
+
+    @app.route('/query', methods=['POST'])
+    def query():
+        '''
+        Starts query for given key
+        '''
+        query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        msg_key= query_msg_fields["key_data"]
+        if thisNode.policy == "EVENTUAL":
+            queryResult = thisNode.query_eventual(msg_key)
+        elif thisNode.policy == "CHAIN":
+            pass
+        else:
+            queryResult = thisNode.query(msg_key)
+
+        return json.dumps({"status": "Success", \
+                            "msg": f"Successful query result for key {msg_key} is value: {queryResult['queryValue']}"})
+
+    @app.route('/queryall', methods=['GET'])
+    def query_all():
+        '''
+        Returns every (key, value) pair stored in DHT for every node in the Network
+        '''
+        res = thisNode.query_all()
+        return json.dumps({"status": "Success", \
+                            "result": res})
+
+    @app.route('/print_all', methods=['GET'])
+    def print_all():
+        '''
+        prints caller whole DHT
+        '''
+        if app.config["N_REPLICAS"] <2:
+            return json.dumps({"dict":thisNode.getDHT(),\
+             "keys":sorted(list(thisNode.getDHT().keys()))})
+        else:
+            return json.dumps({"DHT":thisNode.getDHT(), \
+                                "repl_DHT": thisNode.getReplDHT(), \
+                            "keys":sorted(list(thisNode.getDHT().keys())), \
+                                "repl_keys": sorted(list(thisNode.getReplDHT().keys()))})
+
+
+    #################################################################################################################
+
+
+    #################################################################################################################
+    ############################################ JOIN ###############################################################
+    #################################################################################################################
+
 
     @app.route('/check_join/<string:joinee_ip>', methods=['GET'])
     def check_join(joinee_ip):
@@ -125,7 +215,8 @@ def create_app(test_config=None):
                                 "overlay": overlay
                                 })
 
-    @app.route('/accept_join_next/<string:next_ip>/<string:next_id>')
+
+    @app.route('/accept_join_next/<string:next_ip>/<string:next_id>', methods=['GET'])
     def accept_join_next(next_ip, next_id):
         '''
         Input: next node's ip
@@ -134,10 +225,9 @@ def create_app(test_config=None):
         '''
         print(f"Set {next_ip} (id: {next_id}) as next ")
         thisNode.set_next(next_ip, next_id)
-        return json.dumps({"status": "Success"
-        })
+        return json.dumps({"status": "Success"})
 
-    @app.route('/accept_join_prev/<string:prev_ip>/<string:prev_id>')
+    @app.route('/accept_join_prev/<string:prev_ip>/<string:prev_id>', methods=['GET'])
     def accept_join_prev(prev_ip, prev_id):
         '''
         Input: previous node's ip
@@ -172,6 +262,35 @@ def create_app(test_config=None):
                             "DHT" : newDHT,
         })
 
+    #################################################################################################################
+
+    #################################################################################################################
+    ############################################ DEPART #############################################################
+    #################################################################################################################
+
+    @app.route('/check_depart/<string:departee_id>',methods=['GET'])
+    def check_depart(departee_id):
+        while(False):
+            pass #maybe stall command later
+
+        if not(app.config["IS_BOOTSTRAP"]):
+            status="Error"
+            msg="Not eligible for checking depart request. Try again"
+            print(msg)
+            return json.dumps({"status": status, \
+                                "msg": msg, \
+                                })
+
+        n_prev_nodes, overlay = thisNode.check_depart(departee_id)
+
+        return json.dumps({"status": "Success",\
+                        "text": f"successfuly departed node with IP: {departee_id}", \
+                        "prev_nodes": n_prev_nodes, \
+                        "overlay": overlay})
+
+
+
+
     @app.route('/accept_depart_next/<string:next_ip>/<string:next_id>', methods=['GET'])
     def accept_depart_next(next_ip, next_id):
         thisNode.set_next(next_ip, next_id)
@@ -181,28 +300,25 @@ def create_app(test_config=None):
     @app.route('/accept_depart_prev/<string:prev_ip>/<string:prev_id>', methods=['POST'])
     def accept_depart_prev(prev_ip, prev_id):
         thisNode.set_prev(prev_ip, prev_id)
-        #print("??????????????????????????")
-        #print("RERERERERRE", request, request.json, request.data, request.form)
+
         departee_dict = dict(request.get_json())#("data")
-        # print("departee dict: ", departee_dict)
+
         nodesDHT = thisNode.getDHT()
 
         newDHT = merge_dict(departee_dict, nodesDHT)
-        #print("newDHT (__init__)", newDHT)
+
         thisNode.setDHT(newDHT)
 
         return json.dumps({"status": 'Success', \
                             "updated prev": prev_id, \
                             })
 
-    @app.route('/overlay',methods=['GET'])
-    def overlay():
-        '''
-        Returns overlay of network
-        '''
-        networkOverlay = thisNode.getOverlay()
-        return json.dumps({"status": "Success", \
-                            "Overlay": networkOverlay})
+    #################################################################################################################
+
+    #################################################################################################################
+    ############################################ OVERLAY ############################################################
+    #################################################################################################################
+
 
     @app.route('/add2overlay/',methods=['POST'])
     def add2overlay():
@@ -233,25 +349,12 @@ def create_app(test_config=None):
             pass
         return json.dumps({"status": "Success", "OverlayId":msg_id, "Overlay":thisNode.getOverlayResponses()[msg_id] })
 
+    #################################################################################################################
 
-    @app.route('/insert', methods=['POST'])
-    def insert():
-        '''
-        Starts insertion of {key,value} pair
-        '''
-        # insertion_dict = requests.get_json()["data_dict"] #dictionary with insertion (key, val) pairs
-        # for entry in insertion_dict:
-        #     thisNode.insertToDht(entry, insertion_dict[entry])
-        #
-        # return json.dumps({"status": 'Success', \
-        #                     }
+    #################################################################################################################
+    ############################################ INSERT #############################################################
+    #################################################################################################################
 
-        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
-        msg_key, msg_val = insert_msg_fields["key_data"], insert_msg_fields["val_data"]
-        insertionResult = thisNode.insert(msg_key, msg_val)
-
-        return json.dumps({"status": "Success", \
-                            "msg": f"Successful insertion of data ({msg_key}, {msg_val})"})
 
     @app.route('/propagate_insert/', methods=['POST'])
     def propagate_insert():
@@ -301,6 +404,44 @@ def create_app(test_config=None):
             return json.dumps({"status": "Success", \
                             "msg": f"Forwarded insert request to {thisNode.getNext()}"})
 
+    def propagate_insert_repl(insert_msg_fields):
+        '''
+        Propagates the insertion message
+        '''
+        #insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+
+
+        msg_key, msg_val = \
+            list(insert_msg_fields["data"].keys())[0], list(insert_msg_fields["data"].values())[0] #{k:v}
+
+        # update message dictionary with updated replica counter
+        insert_msg_fields_copy = insert_msg_fields.copy()
+        # insert_msg_fields_copy['replica_counter'] = replica_counter
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.repl_DHT.keys():
+            # current node has (should!) the appropriate hashkey row in replica DHT.
+            # therefore add/edit current node's replica DHT
+
+            thisNode.insertToReplDht(msg_key, hashkey, msg_val)
+            replica_counter = insert_msg_fields["replica_counter"] - 1
+
+        else:
+            replica_counter = insert_msg_fields["replica_counter"]
+
+        print("\x1b[32mReplica counter\x1b[0m", replica_counter)
+
+        if replica_counter != 0:
+            # message has not reached last replica node.
+            # Propagate insertion repl message to next node
+            insertMsg = InsertionMessage(insert_msg_fields_copy, replica_counter=replica_counter)
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            requests.post(f"http://{thisNode.getNextIp()}/threading_replicas/Insertion",\
+                            json=insertMsg.__dict__)
+
+        return  json.dumps({"status": "Success", \
+                        "msg": f"Updated replica with id {thisNode.getAssignedId()}"})
+
 
     @app.route('/propagate_insert_ack/', methods=['POST'])
     def propagate_insert_ack():
@@ -324,6 +465,54 @@ def create_app(test_config=None):
             return json.dumps({"status": "Success", \
             "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
 
+    @app.route('/propagate_insert_2manager/', methods=['POST'])
+    def propagate_insert_2manager():
+        '''
+        Propagates the insertion message to replica manager.
+        '''
+        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        print("\x1b[36mDict:\x1b[0m", insert_msg_fields)
+
+        msg_key, msg_val = \
+            list(insert_msg_fields["data"].keys())[0], list(insert_msg_fields["data"].values())[0] #{k:v}
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore message has arrived at replica manager for this hashkey
+            thisNode.insertToDht(msg_key, hashkey, msg_val)
+            print("Counter:", insert_msg_fields["replica_counter"])
+            x = threading.Thread(target=propagate_insert_repl, args = [insert_msg_fields])
+            x.start()
+
+
+            ack_dict = insert_msg_fields.copy()
+            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+            # consturct ack message
+            ackMsg = AcknowledgeMessage(ack_dict)
+            # propagate ack message to next id
+            req = requests.post(f"http://{thisNode.getNextIp()}/propagate_insert_ack/",\
+                            json=ackMsg.__dict__)
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
+            x.join()
+
+
+        else:
+            # message has not reached appropriate node.
+            # Propagate insertion message to next node
+
+            insertMsg = InsertionMessage(insert_msg_fields, replica_counter=insert_msg_fields["replica_counter"])
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            # \add/edit current node's DHT
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_insert_2manager/",
+                            json=insertMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded insert request to {thisNode.getNext()}"})
+
+
     @app.route('/wait4insert/<string:msg_id>', methods=['GET'])
     def wait4insert(msg_id):
         '''
@@ -339,18 +528,53 @@ def create_app(test_config=None):
             pass
         return json.dumps({"status": "Success", "InsertionId":msg_id, "Insertion":thisNode.getAck()[msg_id] })
 
-    @app.route('/delete', methods=['POST'])
-    def delete():
-        '''
-        Starts deletion of pair with given key
-        '''
 
-        insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
-        msg_key= insert_msg_fields["key_data"]
-        insertionResult = thisNode.delete(msg_key)
+    #################################################################################################################
+    ############################################ DELETE #############################################################
+    #################################################################################################################
 
-        return json.dumps({"status": "Success", \
-                            "msg": f"Successful delete of pair with key {msg_key}"})
+
+    def propagate_delete_repl(delete_msg_fields):
+        '''
+        Propagates the deletion message
+        '''
+        #insert_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+
+
+        msg_key = delete_msg_fields["data"]
+
+        # update message dictionary with updated replica counter
+        delete_msg_fields_copy = delete_msg_fields.copy()
+        # insert_msg_fields_copy['replica_counter'] = replica_counter
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.repl_DHT.keys():
+            # current node has (should!) the appropriate hashkey row in replica DHT.
+            # therefore add/edit current node's replica DHT
+
+            print("\x1b[32mRepl DHT keys\x1b[0m", thisNode.repl_DHT.keys())
+            print("\x1b[32mHashkey\x1b[0m:", hashkey)
+
+            thisNode.deleteFromReplDht(msg_key, hashkey)
+            replica_counter = delete_msg_fields["replica_counter"] - 1
+
+        else:
+            replica_counter = delete_msg_fields["replica_counter"]
+
+        print("\x1b[32mReplica counter\x1b[0m", replica_counter)
+
+        if replica_counter != 0:
+            # message has not reached last replica node.
+            # Propagate insertion repl message to next node
+            deleteMsg = DeletionMessage(delete_msg_fields_copy, replica_counter=replica_counter)
+            #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
+            requests.post(f"http://{thisNode.getNextIp()}/threading_replicas/Deletion",\
+                            json=deleteMsg.__dict__)
+
+        return  json.dumps({"status": "Success", \
+                        "msg": f"Deleted replica with id {thisNode.getAssignedId()}"})
+
+
 
     @app.route('/propagate_delete/', methods=['POST'])
     def propagate_delete():
@@ -413,6 +637,51 @@ def create_app(test_config=None):
             return json.dumps({"status": "Success", \
             "msg": f"Forwarded deletion acknowledge to {thisNode.getNext()}"})
 
+    @app.route('/propagate_delete_2manager/', methods=['POST'])
+    def propagate_delete_2manager():
+        '''
+        Propagates the deletion message to replica manager.
+        '''
+        delete_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        print("\x1b[36mDict:\x1b[0m", delete_msg_fields)
+
+        msg_key = delete_msg_fields["data"]
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore message has arrived at replica manager for this hashkey
+            thisNode.deleteFromDht(msg_key, hashkey)
+            print("Counter:", delete_msg_fields["replica_counter"])
+            y = threading.Thread(target=propagate_delete_repl, args = [delete_msg_fields])
+            y.start()
+
+
+            ack_dict = delete_msg_fields.copy()
+            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+            # consturct ack message
+            ackMsg = AcknowledgeMessage(ack_dict)
+            # propagate ack message to next id
+            req = requests.post(f"http://{thisNode.getNextIp()}/propagate_delete_ack/",\
+                            json=ackMsg.__dict__)
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded delete acknowledge to {thisNode.getNext()}"})
+            y.join()
+
+
+        else:
+            # message has not reached appropriate node.
+            # Propagate insertion message to next node
+
+            deleteMsg = DeletionMessage(delete_msg_fields, replica_counter=delete_msg_fields["replica_counter"])
+            # \add/edit current node's DHT
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_delete_2manager/",
+                            json=deleteMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded deletion request to {thisNode.getNext()}"})
+
 
     @app.route('/wait4delete/<string:msg_id>', methods=['GET'])
     def wait4delete(msg_id):
@@ -426,21 +695,32 @@ def create_app(test_config=None):
 
         return json.dumps({"status": "Success", "DeletionId":msg_id, "Deletion":thisNode.getAck()[msg_id] })
 
+    #################################################################################################################
 
-    @app.route('/query', methods=['POST'])
-    def query():
+    #################################################################################################################
+    ############################################ QUERY #############################################################
+    #################################################################################################################
+
+
+
+    @app.route('/threading_replicas/<string:mode>', methods=['POST'])
+    def threading_replicas(mode):
         '''
-        Starts query for given key
+        spawns threads for message propagation to replicas.
+        mode: message's query type.
         '''
+        if mode == "Insertion":
+            insert_msg_fields = dict(request.get_json())
+            res = propagate_insert_repl(insert_msg_fields)
+        elif mode == "Deletion":
+            delete_msg_fields = dict(request.get_json())
+            res = propagate_delete_repl(delete_msg_fields)
+        return res # gia na mhn petaei error 8elei pantote na epistrefei kati
 
-        query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
-        msg_key= query_msg_fields["key_data"]
-        queryResult = thisNode.query(msg_key)
-        print("DSJDO-SF-O-SO-S-NSLG-NLKGNSLKGNSLKGNSL-KGNSGNSLGNSLG-NSLGNLSGSLG-NSLKNLKGNS-LKGNSLKG-NSLK-GNLKSGNL")
-        print("\x1b[33mResult:\x1b[0m", queryResult)
+    #@app.route('/propagate_insert_repl/', methods=['POST'])
 
-        return json.dumps({"status": "Success", \
-                            "msg": f"Successful query result for key {msg_key} is value: {queryResult['queryValue']}"})
+
+
 
 
     @app.route('/propagate_query/', methods=['POST'])
@@ -473,6 +753,45 @@ def create_app(test_config=None):
 
         else:
             # message has not reached appropriate node.
+            # Propagate query message to next node
+            queryMsg = QueryMessage(query_msg_fields)
+
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query/",\
+                            json=queryMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query request to {thisNode.getNext()}"})
+
+    @app.route('/propagate_query_repl/', methods=['POST'])
+    def propagate_query_repl():
+        '''
+        Propagates the deletion message
+        '''
+        query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+
+        msg_key = query_msg_fields["data"]
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getReplDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore answer query from current node's DHT
+            queryValue = thisNode.queryFromReplDht(msg_key, hashkey)
+            # prepare ack-message's data dictionary
+            ack_dict = query_msg_fields.copy()
+            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+            ack_dict["ack_result"] = queryValue
+            # consturct ack message
+            ackMsg = AcknowledgeMessage(ack_dict)
+            #print("\x1b[31mDict:\x1b[0m", ackMsg.__dict__)
+            # propagate ack message to next id
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_ack/",\
+                            json=ackMsg.__dict__)
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query acknowledge to {thisNode.getNext()}"})
+
+        else:
+            # message has not reached appropriate (replica) node.
             # Propagate query message to next node
             queryMsg = QueryMessage(query_msg_fields)
 
@@ -524,14 +843,7 @@ def create_app(test_config=None):
                 "Query":thisNode.getAck()[msg_id], "queryValue": thisNode.getAckValue()[msg_id]})
 
 
-    @app.route('/queryall', methods=['GET'])
-    def query_all():
-        '''
-        Returns every (key, value) pair stored in DHT for every node in the Network
-        '''
-        res = thisNode.query_all()
-        return json.dumps({"status": "Success", \
-                            "result": res})
+
 
     @app.route('/add2queryall',methods=['POST'])
     def add2queryall():
@@ -564,32 +876,6 @@ def create_app(test_config=None):
         return json.dumps({"status": "Success", "OverlayId":msg_id, "Overlay":thisNode.getOverlayResponses()[msg_id] })
 
 
-    @app.route('/depart', methods=['GET'])
-    def depart():
-        '''
-        safely departs from P2P network.
-        Every local node should call it before departing
-        '''
-        depart_req = thisNode.depart()
-
-        if depart_req["status"] == 'Error':
-            print("error in departing")
-
-        return depart_req
-
-    @app.route('/print_all', methods=['GET'])
-    def print_all():
-        '''
-        prints caller whole DHT
-        '''
-        if app.config["N_REPLICAS"] <2:
-            return json.dumps({"dict":thisNode.getDHT(),\
-             "keys":sorted(list(thisNode.getDHT().keys()))})
-        else:
-            return json.dumps({"DHT":thisNode.getDHT(), \
-                                "repl_DHT": thisNode.getReplDHT(), \
-                            "keys":sorted(list(thisNode.getDHT().keys())), \
-                                "repl_keys": sorted(list(thisNode.getReplDHT().keys()))})
 
     @app.route('/delete_all', methods=['GET'])
     def delete_all():
@@ -745,7 +1031,10 @@ def create_app(test_config=None):
         return json.dumps({"status":"Success"})
 
 
-
+    @app.route('/updateOverlay', methods=['GET'])
+    def updateOverlay():
+        res= thisNode.updateOverlay()
+        return json.dumps({"status": res["status"]})
 
     @app.route('/load_data_from_file', methods=['GET'])
     def load_data_from_file():
@@ -759,7 +1048,7 @@ def create_app(test_config=None):
             DHT[str(i)] = {}
 
         print(pathlib.Path(__file__).parent.absolute())
-        filepath=str(pathlib.Path(__file__).parent.absolute())+"/data/insert.txt"
+        filepath=str(pathlib.Path(__file__).parent.absolute())+"/data/insert1.txt"
         #filepath="/data/insert.txt"
         with open(filepath) as f:
             for line in f:
