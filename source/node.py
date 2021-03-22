@@ -344,6 +344,43 @@ class Node:
 
             return wait_req
 
+    def insert_chain(self, key, value):
+        '''
+        API request to insert value to all replicas following eventual consistency
+        linearilizability. If it already exists
+        then the value is updated instead.
+        Only to be called when replication is enabled with chain replication.
+        '''
+        hashkey = str(getId(key))
+        msg_id = self.getMsgId()
+        print("\x1b[36mHashkey:\x1b[0m", hashkey)
+        print("\x1b[36mDHT keys:\x1b[0m", self.getDHT().keys())
+        if hashkey in self.getDHT().keys():
+            # node is replica manager for this particular hashkey
+            self.insertToDht(key, hashkey, value)
+            insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                                sender_ip=self.ip, msg="", key_data=key,\
+                                val_data=value, replica_counter=self.n_replicas-1)
+            # propagate replica insert to replicas. Start with counter = n_replicas-1
+            mode = "Insertion"
+            insert_req = (requests.post(f"http://{self.next_ip}/threading_replicas/{mode}", json=insert_msg.__dict__)).json()
+
+            return {"status": "Success", \
+                   "text": f"Successfuly added {key}, {value} in node {self.assigned_id}"}
+
+
+        # elif hashkey in self.getReplDHT().keys():
+        else:
+            # node is not replica manager for this particular hashkey
+            insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                            sender_ip=self.ip, msg="", key_data=key,\
+                            val_data=value, replica_counter=self.n_replicas-1)
+
+            insert_req = (requests.post(f"http://{self.next_ip}/propagate_insert_2manager/", json=insert_msg.__dict__)).json()
+            wait_req = (requests.get("http://"+self.ip+f"/wait4insert/{msg_id}")).json()
+
+            return wait_req
+
     def delete(self, key):
         '''
         API request to delete pair with given key. If it doesnt exists
@@ -393,6 +430,38 @@ class Node:
             return {"status": "Success", \
                    "text": f"Successfuly deleted {key} from node {self.assigned_id}"}
             y.join()
+
+        else:
+            # node is not replica manager for this particular hashkey
+            delete_msg = DeletionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                            sender_ip=self.ip, msg="", key_data=key,\
+                            replica_counter=self.n_replicas-1)
+
+            delete_req = (requests.post(f"http://{self.next_ip}/propagate_delete_2manager/", json=delete_msg.__dict__)).json()
+            wait_req = (requests.get("http://"+self.ip+f"/wait4delete/{msg_id}")).json()
+
+            return wait_req
+
+    def delete_chain(self, key):
+        '''
+        API request to delete pair with given key. If it doesnt exists
+        then nothing happens. Chain replication
+        '''
+        hashkey = str(getId(key))
+        msg_id = self.getMsgId()
+
+        if hashkey in self.getDHT().keys():
+            # node is replica manager for this particular hashkey
+            self.deleteFromDht(key, hashkey)
+            delete_msg = DeletionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                                sender_ip=self.ip, msg="", key_data=key,\
+                                replica_counter=self.n_replicas-1)
+            # propagate replica insert to replicas. Start with counter = n_replicas-1
+            mode = "Deletion"
+            delete_req = (requests.post(f"http://{self.next_ip}/threading_replicas/{mode}", json=delete_msg.__dict__)).json()
+
+            return {"status": "Success", \
+                   "text": f"Successfuly deleted {key} from node {self.assigned_id}"}
 
         else:
             # node is not replica manager for this particular hashkey
@@ -463,6 +532,40 @@ class Node:
                         sender_ip=self.ip, msg="", key_data=key, replica_counter = self.n_replicas - 1)
             # propagate query to next node
             query_req = (requests.post(f"http://{self.next_ip}/propagate_query_repl/", json=query_msg.__dict__)).json()
+            # wait for response at wait4query route
+            wait_req = (requests.get("http://"+self.ip+f"/wait4query/{msg_id}")).json()
+
+        return wait_req
+
+
+    def query_chain(self, key):
+        '''
+        API request the value that corresponds to a
+        key stored in a node's hash table
+
+        '''
+        hashkey = str(getId(key))
+        if hashkey in self.getDHT().keys():
+            # queryVal = self.queryFromDht(key, hashkey)
+            msg_id = self.getMsgId()
+            query_msg = QueryMessage(msg_id=msg_id, sender_id=self.assigned_id,\
+                        sender_ip=self.ip, msg="", key_data=key, replica_counter = self.n_replicas - 1)
+            # propagate query to next node
+            query_req = (requests.post(f"http://{self.next_ip}/propagate_query_repl/", json=query_msg.__dict__)).json()
+            wait_req = (requests.get("http://"+self.ip+f"/wait4query/{msg_id}")).json()
+            return wait_req
+
+        else:
+            # current node not responsible for hashKey. Construct Delete Message
+            msg_id = self.getMsgId()
+            # set ack to False, since node has not received ack for request
+            self.setAck(msg_id, False)
+            # set ackvalue to None, since node has not received ack for request
+            self.setAckValue(msg_id, None)
+            query_msg = QueryMessage(msg_id=msg_id, sender_id=self.assigned_id,\
+                        sender_ip=self.ip, msg="", key_data=key, replica_counter = self.n_replicas - 1)
+            # propagate query to next node
+            query_req = (requests.post(f"http://{self.next_ip}/propagate_query_2manager/", json=query_msg.__dict__)).json()
             # wait for response at wait4query route
             wait_req = (requests.get("http://"+self.ip+f"/wait4query/{msg_id}")).json()
 
@@ -554,6 +657,12 @@ class Node:
         self.msg_id += 1
         print("after: ", self.msg_id)
         return  str(self.assigned_id) + "_" + str(self.msg_id)
+
+    def getPolicy(self):
+        '''
+        Returns Nodes replication policy, if anything
+        '''
+        return self.policy
 
     def getOverlay(self):
         '''

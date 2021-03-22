@@ -132,7 +132,7 @@ def create_app(test_config=None):
         if thisNode.policy == "EVENTUAL":
             deletionResult = thisNode.delete_eventual(msg_key)
         elif thisNode.policy == "CHAIN":
-            pass
+            deletionResult = thisNode.delete_chain(msg_key)
         else:
             deletionResult = thisNode.delete(msg_key)
         return json.dumps({"status": "Success", \
@@ -148,7 +148,7 @@ def create_app(test_config=None):
         if thisNode.policy == "EVENTUAL":
             queryResult = thisNode.query_eventual(msg_key)
         elif thisNode.policy == "CHAIN":
-            pass
+            queryResult = thisNode.query_chain(msg_key)
         else:
             queryResult = thisNode.query(msg_key)
 
@@ -482,8 +482,12 @@ def create_app(test_config=None):
             # therefore message has arrived at replica manager for this hashkey
             thisNode.insertToDht(msg_key, hashkey, msg_val)
             print("Counter:", insert_msg_fields["replica_counter"])
-            x = threading.Thread(target=propagate_insert_repl, args = [insert_msg_fields])
-            x.start()
+            if thisNode.getPolicy() == "EVENTUAL":
+                x = threading.Thread(target=propagate_insert_repl, args = [insert_msg_fields])
+                x.start()
+            elif thisNode.getPolicy() == "CHAIN":
+                mode = "Insertion"
+                insert_req = (requests.post(f"http://{thisNode.getNextIp()}/threading_replicas/{mode}", json=insert_msg_fields)).json()
 
 
             ack_dict = insert_msg_fields.copy()
@@ -496,7 +500,8 @@ def create_app(test_config=None):
 
             return  json.dumps({"status": "Success", \
                             "msg": f"Forwarded insert acknowledge to {thisNode.getNext()}"})
-            x.join()
+            if thisNode.policy == "EVENTUAL":
+                x.join()
 
 
         else:
@@ -653,9 +658,13 @@ def create_app(test_config=None):
             # therefore message has arrived at replica manager for this hashkey
             thisNode.deleteFromDht(msg_key, hashkey)
             print("Counter:", delete_msg_fields["replica_counter"])
-            y = threading.Thread(target=propagate_delete_repl, args = [delete_msg_fields])
-            y.start()
-
+            if thisNode.getPolicy() == "EVENTUAL":
+                y = threading.Thread(target=propagate_delete_repl, args = [delete_msg_fields])
+                y.start()
+            elif thisNode.getPolicy() == "CHAIN":
+                delete_req = (requests.post(f"http://{thisNode.getNextIp()}/threading_replicas/Deletion", json=delete_msg_fields)).json()
+            else:
+                print("Policy should be one of [EVENTUAL|POLICY] when using propagate_delete_2manager")
 
             ack_dict = delete_msg_fields.copy()
             ack_dict["ack_sender_id"] = thisNode.getAssignedId()
@@ -667,7 +676,8 @@ def create_app(test_config=None):
 
             return  json.dumps({"status": "Success", \
                             "msg": f"Forwarded delete acknowledge to {thisNode.getNext()}"})
-            y.join()
+            if thisNode.getPolicy == "EVENTUAL":
+                y.join()
 
 
         else:
@@ -765,37 +775,106 @@ def create_app(test_config=None):
     @app.route('/propagate_query_repl/', methods=['POST'])
     def propagate_query_repl():
         '''
-        Propagates the deletion message
+        Propagates the query message
         '''
         query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
-
         msg_key = query_msg_fields["data"]
 
-        hashkey = str(getId(msg_key))
-        if hashkey in thisNode.getReplDHT().keys():
-            # current node has the appropriate hashkey row.
-            # therefore answer query from current node's DHT
-            queryValue = thisNode.queryFromReplDht(msg_key, hashkey)
-            # prepare ack-message's data dictionary
-            ack_dict = query_msg_fields.copy()
-            ack_dict["ack_sender_id"] = thisNode.getAssignedId()
-            ack_dict["ack_result"] = queryValue
-            # consturct ack message
-            ackMsg = AcknowledgeMessage(ack_dict)
-            #print("\x1b[31mDict:\x1b[0m", ackMsg.__dict__)
-            # propagate ack message to next id
-            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_ack/",\
-                            json=ackMsg.__dict__)
 
-            return  json.dumps({"status": "Success", \
+        hashkey = str(getId(msg_key))
+        replica_counter = query_msg_fields["replica_counter"]
+        print("\x1b[32mReplica Counter:\x1b[0m", replica_counter)
+
+        if hashkey in thisNode.getReplDHT().keys():
+            # update replica counter
+            replica_counter = replica_counter- 1
+
+            # ~~~~~~~~~~~EVENTUAL POLICY~~~~~~~~
+            if thisNode.getPolicy() == 'EVENTUAL':
+                # current node has the appropriate hashkey row.
+                # therefore answer query from current node's DHT
+                queryValue = thisNode.queryFromReplDht(msg_key, hashkey)
+                # prepare ack-message's data dictionary
+                ack_dict = query_msg_fields.copy()
+                ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+                ack_dict["ack_result"] = queryValue
+                # consturct ack message
+                ackMsg = AcknowledgeMessage(ack_dict)
+                #print("\x1b[31mDict:\x1b[0m", ackMsg.__dict__)
+                # propagate ack message to next id
+                requests.post(f"http://{thisNode.getNextIp()}/propagate_query_ack/",\
+                                json=ackMsg.__dict__)
+
+                return  json.dumps({"status": "Success", \
                             "msg": f"Forwarded query acknowledge to {thisNode.getNext()}"})
+
+            # ~~~~~~~~~~~CHAIN POLICY~~~~~~~~
+            else:
+                # policy is : "CHAIN"
+                # print("Replica counter:", replica_counter)
+                if replica_counter != 0:
+                    # this is not the last replica!
+                    query_msg_fields_copy = query_msg_fields.copy()
+                    query_msg_fields_copy["replica_counter"] = replica_counter
+                    query_req = (requests.post(f"http://{thisNode.getNextIp()}/propagate_query_repl/", json=query_msg_fields_copy)).json()
+                    return  json.dumps({"status": "Success", \
+                                "msg": f"Forwarded query request to replica: {thisNode.getNext()}"})
+                else:
+                    queryValue = thisNode.queryFromReplDht(msg_key, hashkey)
+                    # prepare ack-message's data dictionary
+                    ack_dict = query_msg_fields.copy()
+                    ack_dict["ack_sender_id"] = thisNode.getAssignedId()
+                    ack_dict["ack_result"] = queryValue
+                    # consturct ack message
+                    ackMsg = AcknowledgeMessage(ack_dict)
+                    #print("\x1b[31mDict:\x1b[0m", ackMsg.__dict__)
+                    # propagate ack message to next id
+                    requests.post(f"http://{thisNode.getNextIp()}/propagate_query_ack/",\
+                                    json=ackMsg.__dict__)
+                    return  json.dumps({"status": "Success", \
+                                "msg": f"Forwarded query acknowledge to {thisNode.getNext()}"})
+
 
         else:
             # message has not reached appropriate (replica) node.
             # Propagate query message to next node
-            queryMsg = QueryMessage(query_msg_fields)
+            queryMsg = QueryMessage(query_msg_fields, replica_counter = replica_counter)
 
-            requests.post(f"http://{thisNode.getNextIp()}/propagate_query/",\
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_repl/",\
+                            json=queryMsg.__dict__)
+            # return success on caller
+            return json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query request to {thisNode.getNext()}"})
+
+    @app.route('/propagate_query_2manager/', methods=['POST'])
+    def propagate_query_2manager():
+        '''
+        Propagates the query message to replica manager.
+        '''
+        query_msg_fields = dict(request.get_json()) #key_data:.., val_data:...
+        print("\x1b[36mDict:\x1b[0m", query_msg_fields)
+
+        msg_key = query_msg_fields["data"]
+
+        hashkey = str(getId(msg_key))
+        if hashkey in thisNode.getDHT().keys():
+            # current node has the appropriate hashkey row.
+            # therefore message has arrived at replica manager for this hashkey
+
+            query_req = (requests.post(f"http://{thisNode.getNextIp()}/propagate_query_repl/", json=query_msg_fields)).json()
+
+
+            return  json.dumps({"status": "Success", \
+                            "msg": f"Forwarded query 2 replica manager {thisNode.getNext()}"})
+
+
+        else:
+            # message has not reached appropriate node.
+            # Propagate insertion message to next node
+
+            queryMsg = QueryMessage(query_msg_fields, replica_counter=query_msg_fields["replica_counter"])
+            # \add/edit current node's DHT
+            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_2manager/",
                             json=queryMsg.__dict__)
             # return success on caller
             return json.dumps({"status": "Success", \

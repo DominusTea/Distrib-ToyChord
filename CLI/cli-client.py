@@ -3,6 +3,8 @@ from click_repl import register_repl
 import json
 # for requesting
 import requests
+# for simulating
+import simulator
 
 @click.group()
 def cli():
@@ -119,6 +121,43 @@ def query(key):
     else:
         click.echo(f"Must login first (using give_credentials command)")
 
+@cli.command()
+@click.option('--sim_attr',\
+    type= click.Choice(["write", "read", "joined"]), \
+    required = True)
+def simulate(sim_attr):
+    '''
+    SImulates network's throughput
+    simulation attribute must be one of [ write | read | joined ]
+    '''
+    if hasLoggedIn:
+        click.echo(f"Attempting to get network's overlay for simulation")
+        # get overlay
+        res_overlay = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/overlay")).json()
+        net_overlay = res_overlay["Overlay"]["Overlay"]
+        click.echo("Found network's overlay \n Constructing Simulator")
+        # construct simulator
+        sim = simulator.Simulator(net_overlay)
+        # get input file from simulation_attribute
+        if sim_attr == "write":
+            sim.insert_requests(
+                filepath="data/insert.txt",\
+                mode="inserts"
+                )
+        elif sim_attr == "read":
+            sim.insert_requests(
+                filepath="data/query.txt",\
+                mode="queries"
+                )
+        elif sim_attr == "joined":
+            sim.insert_requests(
+                filepath="data/requests.txt",\
+                mode="requests"
+                )
+        else:
+            click.echo("ERROR")
+        result = sim.simulate()
+        click.echo(f"Average {sim_attr} throughput is {result[0]} for {result[1]} requests.")
 
 
 if __name__=="__main__":
