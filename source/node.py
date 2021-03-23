@@ -486,7 +486,7 @@ class Node:
             queryVal = self.queryFromDht(key, hashkey)
             return {"status": "Success", \
                    "text": f"Successful query for pair with key: {key} from node: {self.assigned_id}. Result: {queryVal}", \
-                   "queryValue": {queryVal}}
+                   "queryValue": queryVal}
 
         else:
             # current node not responsible for hashKey. Construct Delete Message
@@ -514,12 +514,12 @@ class Node:
             queryVal = self.queryFromDht(key, hashkey)
             return {"status": "Success", \
                    "text": f"Successful query for pair with key: {key} from node: {self.assigned_id}. Result: {queryVal}", \
-                   "queryValue": {queryVal}}
+                   "queryValue": queryVal}
         elif hashkey in self.getReplDHT().keys():
             queryVal = self.queryFromReplDht(key, hashkey)
             return {"status": "Success", \
                    "text": f"Successful query for pair with key: {key} from node: {self.assigned_id}. Result: {queryVal}", \
-                   "queryValue": {queryVal}}
+                   "queryValue": queryVal}
 
         else:
             # current node not responsible for hashKey. Construct Delete Message

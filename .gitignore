@@ -1,6 +1,6 @@
 instance/config.py
-
-
+CLI/results/
+results.txt
 
 
 # Byte-compiled / optimized / DLL files

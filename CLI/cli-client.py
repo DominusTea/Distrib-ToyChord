@@ -5,6 +5,7 @@ import json
 import requests
 # for simulating
 import simulator
+import numpy as np
 
 @click.group()
 def cli():
@@ -123,42 +124,55 @@ def query(key):
 
 @cli.command()
 @click.option('--sim_attr',\
-    type= click.Choice(["write", "read", "joined"]), \
-    required = True)
-def simulate(sim_attr):
+                type= click.Choice(["write", "read", "joined"]), \
+                required = True \
+                )
+@click.option(  '--ntrials', \
+                default=1, \
+                type=int)
+@click.option(  '-o', \
+                '--output_dir', \
+                default=None, \
+                type=str)
+def simulate(sim_attr, ntrials, output_dir):
     '''
     SImulates network's throughput
     simulation attribute must be one of [ write | read | joined ]
     '''
     if hasLoggedIn:
-        click.echo(f"Attempting to get network's overlay for simulation")
-        # get overlay
-        res_overlay = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/overlay")).json()
-        net_overlay = res_overlay["Overlay"]["Overlay"]
-        click.echo("Found network's overlay \n Constructing Simulator")
-        # construct simulator
-        sim = simulator.Simulator(net_overlay)
-        # get input file from simulation_attribute
-        if sim_attr == "write":
-            sim.insert_requests(
-                filepath="data/insert.txt",\
-                mode="inserts"
-                )
-        elif sim_attr == "read":
-            sim.insert_requests(
-                filepath="data/query.txt",\
-                mode="queries"
-                )
-        elif sim_attr == "joined":
-            sim.insert_requests(
-                filepath="data/requests.txt",\
-                mode="requests"
-                )
+        res_arr = np.zeros(ntrials)
+        for i in range(ntrials):
+            click.echo(f"Attempting to get network's overlay for simulation")
+            # get overlay
+            res_overlay = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/overlay")).json()
+            net_overlay = res_overlay["Overlay"]["Overlay"]
+            click.echo("Found network's overlay \n Constructing Simulator")
+            # construct simulator
+            sim = simulator.Simulator(net_overlay)
+            # get input file from simulation_attribute
+            if sim_attr == "write":
+                sim.insert_requests(
+                    filepath="data/insert.txt",\
+                    mode="inserts"
+                    )
+            elif sim_attr == "read":
+                sim.insert_requests(
+                    filepath="data/query.txt",\
+                    mode="queries"
+                    )
+            elif sim_attr == "joined":
+                sim.insert_requests(
+                    filepath="data/requests.txt",\
+                    mode="requests"
+                    )
+            else:
+                click.echo("ERROR")
+            result = sim.simulate(output_dir)
+            res_arr[i] = result[0]
+        if ntrials == 1:
+            click.echo(f"Average {sim_attr} throughput is {result[0]} (requests/sec) for {result[1]} requests.")
         else:
-            click.echo("ERROR")
-        result = sim.simulate()
-        click.echo(f"Average {sim_attr} throughput is {result[0]} for {result[1]} requests.")
-
+            click.echo(f"Average {sim_attr} throughput is {res_arr.mean()} +/- {res_arr.std()} (requests/sec) for {result[1]} requests, {ntrials} trials.")
 
 if __name__=="__main__":
 
