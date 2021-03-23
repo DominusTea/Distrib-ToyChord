@@ -335,9 +335,15 @@ class Node:
         # elif hashkey in self.getReplDHT().keys():
         else:
             # node is not replica manager for this particular hashkey
-            insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
-                            sender_ip=self.ip, msg="", key_data=key,\
-                            val_data=value, replica_counter=self.n_replicas-1)
+            if hashkey in self.getReplDHT().keys():
+                insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                                sender_ip=self.ip, msg="", key_data=key,\
+                                val_data=value, replica_counter=self.n_replicas-1,direction = 'l')
+            else:
+                insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                                sender_ip=self.ip, msg="", key_data=key,\
+                                val_data=value, replica_counter=self.n_replicas-1)
+
 
             insert_req = (requests.post(f"http://{self.next_ip}/propagate_insert_2manager/", json=insert_msg.__dict__)).json()
             wait_req = (requests.get("http://"+self.ip+f"/wait4insert/{msg_id}")).json()
@@ -371,10 +377,16 @@ class Node:
 
         # elif hashkey in self.getReplDHT().keys():
         else:
-            # node is not replica manager for this particular hashkey
-            insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
-                            sender_ip=self.ip, msg="", key_data=key,\
-                            val_data=value, replica_counter=self.n_replicas-1)
+            if hashkey in self.getReplDHT().keys():
+                # node is not replica manager for this particular hashkey
+                insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                                sender_ip=self.ip, msg="", key_data=key,\
+                                val_data=value, replica_counter=self.n_replicas-1, direction='l')
+            else:
+                # node is not replica manager for this particular hashkey
+                insert_msg = InsertionMessage(msg_id=msg_id, sender_id=self.assigned_id, \
+                                sender_ip=self.ip, msg="", key_data=key,\
+                                val_data=value, replica_counter=self.n_replicas-1)
 
             insert_req = (requests.post(f"http://{self.next_ip}/propagate_insert_2manager/", json=insert_msg.__dict__)).json()
             wait_req = (requests.get("http://"+self.ip+f"/wait4insert/{msg_id}")).json()
@@ -562,8 +574,13 @@ class Node:
             self.setAck(msg_id, False)
             # set ackvalue to None, since node has not received ack for request
             self.setAckValue(msg_id, None)
-            query_msg = QueryMessage(msg_id=msg_id, sender_id=self.assigned_id,\
-                        sender_ip=self.ip, msg="", key_data=key, replica_counter = self.n_replicas - 1)
+
+            if hashkey in self.getReplDHT().keys():
+                query_msg = QueryMessage(msg_id=msg_id, sender_id=self.assigned_id,\
+                            sender_ip=self.ip, msg="", key_data=key, replica_counter = self.n_replicas - 1, direction='l')
+            else:
+                query_msg = QueryMessage(msg_id=msg_id, sender_id=self.assigned_id,\
+                            sender_ip=self.ip, msg="", key_data=key, replica_counter = self.n_replicas - 1)
             # propagate query to next node
             query_req = (requests.post(f"http://{self.next_ip}/propagate_query_2manager/", json=query_msg.__dict__)).json()
             # wait for response at wait4query route

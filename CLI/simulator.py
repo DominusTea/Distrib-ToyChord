@@ -47,7 +47,7 @@ class Simulator:
 
             elif mode=="inserts":
                 l = line.split(" ")
-                print("Line", line)
+                # print("Line", line)
                 value = l[-1]
                 song = ' '.join(l[0:-1])[:-1]
                 req_str = ("insert" , song ,  value)
@@ -79,7 +79,7 @@ class Simulator:
             # req = req.split(" ")
             mode = req[0]
             # song = ' '.join(req[1:])
-            print("Req:", req)
+            # print("Req:", req)
             if mode == "delete":
 
                 res = requests.post(f"http://{node_ip}/delete", \

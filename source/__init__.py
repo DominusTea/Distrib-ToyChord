@@ -508,14 +508,22 @@ def create_app(test_config=None):
             # message has not reached appropriate node.
             # Propagate insertion message to next node
 
-            insertMsg = InsertionMessage(insert_msg_fields, replica_counter=insert_msg_fields["replica_counter"])
+            insertMsg = InsertionMessage(insert_msg_fields, replica_counter=insert_msg_fields["replica_counter"], direction=insert_msg_fields["direction"])
             #insertMsg.update(thisNode.getAssignedId(), thisNode.getIp())
             # \add/edit current node's DHT
-            requests.post(f"http://{thisNode.getNextIp()}/propagate_insert_2manager/",
+
+            if insertMsg.direction == 'l':
+                ip = thisNode.getPrevIp()
+                id = thisNode.getPrev()
+            else:
+                ip = thisNode.getNextIp()
+                id = thisNode.getNext()
+
+            requests.post(f"http://{ip}/propagate_insert_2manager/",
                             json=insertMsg.__dict__)
             # return success on caller
             return json.dumps({"status": "Success", \
-                            "msg": f"Forwarded insert request to {thisNode.getNext()}"})
+                            "msg": f"Forwarded insert request to {id}"})
 
 
     @app.route('/wait4insert/<string:msg_id>', methods=['GET'])
@@ -872,13 +880,22 @@ def create_app(test_config=None):
             # message has not reached appropriate node.
             # Propagate insertion message to next node
 
-            queryMsg = QueryMessage(query_msg_fields, replica_counter=query_msg_fields["replica_counter"])
+            queryMsg = QueryMessage(query_msg_fields, replica_counter=query_msg_fields["replica_counter"], direction=query_msg_fields["direction"])
+
+            if queryMsg.direction == 'l':
+                ip = thisNode.getPrevIp()
+                id = thisNode.getPrev()
+            else:
+                ip = thisNode.getNextIp()
+                id = thisNode.getNext()
+
+
             # \add/edit current node's DHT
-            requests.post(f"http://{thisNode.getNextIp()}/propagate_query_2manager/",
+            requests.post(f"http://{ip}/propagate_query_2manager/",
                             json=queryMsg.__dict__)
             # return success on caller
             return json.dumps({"status": "Success", \
-                            "msg": f"Forwarded query request to {thisNode.getNext()}"})
+                            "msg": f"Forwarded query request to {id}"})
 
 
     @app.route('/propagate_query_ack/', methods=['POST'])

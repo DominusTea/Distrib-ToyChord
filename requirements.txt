@@ -1,0 +1,5 @@
+Flask==1.1.2
+click==7.1.2
+requests==2.25.1
+click_repl==0.1.6
+numpy==1.19.2
