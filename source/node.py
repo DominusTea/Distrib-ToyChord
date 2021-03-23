@@ -208,8 +208,8 @@ class Node:
 
             print("joined with assigned id", self.assigned_id)
             # load data from local directory. ONLY FOR TESTING DELETE LATER
-            print("http://"+self.ip+"/load_data_from_file")
-            requests.get("http://"+self.ip+"/load_data_from_file")
+            # print("http://"+self.ip+"/load_data_from_file")
+            # requests.get("http://"+self.ip+"/load_data_from_file")
 
             return {"text": "This is the bootstrap node", \
                     "assigned_position": getId(self.ip),\
