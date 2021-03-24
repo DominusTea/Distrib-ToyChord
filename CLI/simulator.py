@@ -67,7 +67,7 @@ class Simulator:
         # start counting time
         start_time = time.time()
         if output_dir is not None:
-            simu_file = open(output_dir, "w+")
+            simu_file = open(output_dir, "w")
         for req in self.req_lst:
 
             # randomly select one node
@@ -96,9 +96,11 @@ class Simulator:
             else:
                 raise RuntimeError("illegal request", req)
             if output_dir is not None:
-                simu_file.write(str(res.json()))
-                simu_file.write("\n")
-
+                try:
+                    simu_file.write(str(res.json()))
+                    simu_file.write("\n")
+                except:
+                    pass
 
         end_time = time.time()
         duration = end_time - start_time

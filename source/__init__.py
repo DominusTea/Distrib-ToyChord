@@ -534,8 +534,8 @@ def create_app(test_config=None):
             # print("--------------------------------")
             # print(thisNode.getInsertAck)
             # print("--------------------------------")
-            time.sleep(1)
-            print(f"in wait with ack: {thisNode.getAck()}")
+            # time.sleep(1)
+            # print(f"in wait with ack: {thisNode.getAck()}")
             #print(type(msg_id), msg_id)
             #print(thisNode.getOverlayResponses())
             pass
@@ -707,8 +707,8 @@ def create_app(test_config=None):
         Endpoint that waits for deletion
         '''
         while (not thisNode.getAck()[msg_id]):
-            time.sleep(1)
-            print(f"in wait with ack: {thisNode.getAck()}")
+            # time.sleep(1)
+            # print(f"in wait with ack: {thisNode.getAck()}")
             pass
 
         return json.dumps({"status": "Success", "DeletionId":msg_id, "Deletion":thisNode.getAck()[msg_id] })
@@ -931,8 +931,8 @@ def create_app(test_config=None):
         Endpoint that waits for deletion
         '''
         while (not thisNode.getAck()[msg_id]):
-            time.sleep(1)
-            print(f"in wait with ack: {thisNode.getAck()}")
+            # time.sleep(1)
+            # print(f"in wait with ack: {thisNode.getAck()}")
             pass
 
         return json.dumps({"status": "Success", "QueryId":msg_id, \

@@ -1,0 +1,451 @@
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 1)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Satisfaction, 2)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Imagine, 3)'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 4)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 5)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Good Vibrations, 6)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Johnny B. Goode, 7)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 8)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Smells Like Teen Spirit, 9)'}
+{'status': 'Success', 'msg': "Successful insertion of data (What'd I Say, 10)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (My Generation, 11)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (A Change Is Gonna Come, 12)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Yesterday, 13)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Blowin' in the Wind, 14)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (London Calling, 15)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Want to Hold Your Hand, 16)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Purple Haze, 17)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Maybellene, 18)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hound Dog, 19)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Let It Be, 20)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Born to Run, 21)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Be My Baby, 22)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (In My Life, 23)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (People Get Ready, 24)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (God Only Knows, 25)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (A Day in the Life, 26)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Layla, 27)'}
+{'status': 'Success', 'msg': 'Successful insertion of data ((Sittin on) the Dock of the Bay, 28)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Help!, 29)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Walk the Line, 30)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Stairway To Heaven, 31)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sympathy for the Devil, 32)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (River Deep - Mountain High, 33)'}
+{'status': 'Success', 'msg': "Successful insertion of data (You've Lost That Lovin' Feelin', 34)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Light My Fire, 35)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (One, 36)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (No Woman, 37)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Gimme Shelter, 38)'}
+{'status': 'Success', 'msg': "Successful insertion of data (That'll Be the Day, 39)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Dancing in the Street, 40)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Weight, 41)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Waterloo Sunset, 42)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tutti-Frutti, 43)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Georgia on My Mind, 44)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Heartbreak Hotel, 45)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Heroes, 46)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bridge Over Troubled Water, 47)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hotel California, 49)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Tracks of My Tears, 50)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Message, 51)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (When Doves Cry, 52)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Anarchy in the U.K., 53)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Long Tall Sally, 56)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Whiter Shade of Pale, 57)'}
+{'status': 'Success', 'msg': "Successful insertion of data (The Times They Are A-Changin', 59)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Let's Stay Together, 60)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Whole Lotta Shakin' Goin On, 61)"}
+{'status': 'Success', 'msg': "Successful insertion of data (For What It's Worth, 63)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (She Loves You, 64)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Redemption Song, 66)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tangled Up in Blue, 68)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Crying, 69)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Walk On By, 70)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (California Girls, 71)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Papa's Got a Brand New Bag, 72)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Summertime Blues, 73)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Superstition, 74)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Whole Lotta Love, 75)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Strawberry Fields Forever, 76)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Mystery Train, 77)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Got You (I Feel Good), 78)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Mr. Tambourine Man, 79)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Heard It Through the Grapevine, 80)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Blueberry Hill, 81)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (You Really Got Me, 82)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Norwegian Wood (This Bird Has Flown), 83)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Every Breath You Take, 84)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Crazy, 85)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Thunder Road, 86)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ring of Fire, 87)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (My Girl, 88)'}
+{'status': 'Success', 'msg': "Successful insertion of data (California Dreamin', 89)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (In the Still of the Nite, 90)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Suspicious Minds, 91)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Blitzkrieg Bop, 92)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I Still Haven't Found What I'm Looking For, 93)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Good Golly, 94)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Blue Suede Shoes, 95)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Great Balls of Fire, 96)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Roll Over Beethoven, 97)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Love and Happiness, 98)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Fortunate Son, 99)'}
+{'status': 'Success', 'msg': "Successful insertion of data (You Can't Always Get What You Want, 100)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Voodoo Child (Slight Return), 101)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Be-Bop-A-Lula, 102)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hot Stuff, 103)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Living for the City, 104)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Mr. Tambourine Man, 106)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Not Fade Away, 107)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Brown Eyed Girl, 109)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I've Been Loving You Too Long (to Stop Now), 110)"}
+{'status': 'Success', 'msg': "Successful insertion of data (I'm So Lonesome I Could Cry, 111)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Up on the Roof, 113)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Da Doo Ron Ron ), 114)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (You Send Me, 115)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Take Me to the River , 117)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Shout (Parts 1 and 2)], 118)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Go Your Own Way, 119)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Want You Back, 120)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Stand By Me, 121)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (House of the Rising Sun, 122)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Will You Love Me Tomorrow, 123)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Shake, 124)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Changes, 125)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rock & Roll Music, 126)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Maggie May, 128)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (With or Without You, 129)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Who Do You Love, 130)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Won't Get Fooled Again, 131)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (In the Midnight Hour, 132)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (While My Guitar Gently Weeps, 133)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Eleanor Rigby, 135)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Family Affair, 136)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Saw Her Standing There, 137)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Kashmir, 138)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (All I Have to Do Is Dream, 139)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Please, 140)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Purple Rain, 141)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Wanna Be Sedated, 142)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Everyday People, 143)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rock Lobster, 144)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Lust for Life, 145)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Me and Bobby McGee, 146)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Cathy's Clown, 147)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Eight Miles High, 148)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Earth Angel, 149)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Foxey Lady, 150)'}
+{'status': 'Success', 'msg': "Successful insertion of data (A Hard Day's Night, 151)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rave On, 152)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Proud Mary, 153)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Sounds of Silence, 154)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Only Have Eyes for You, 155)'}
+{'status': 'Success', 'msg': "Successful insertion of data ((We're Gonna) Rock Around the Clock, 156)"}
+{'status': 'Success', 'msg': "Successful insertion of data (I'm Waiting for the Man, 157)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bring the Noise, 158)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I Can't Stop Loving You, 159)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Nothing Compares 2 U, 160)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bohemian Rhapsody, 161)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Folsom Prison Blues, 162)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Fast Car, 163)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Lose Yourself , 164)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Let's Get It On, 165)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Papa Was a Rollin' Stone, 166)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Both Sides Now, 168)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Dancing Queen, 169)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (God Save the Queen, 171)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Paint It, 172)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Fought the Law, 173)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Don't Worry Baby, 174)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Free Fallin', 175)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (September Gurls, 176)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Ya!, 178)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Green Onions, 179)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Please Please Me, 182)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Desolation Row, 183)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Never Loved a Man (The Way I Love You), 184)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Back in Black, 185)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Who'll Stop the Rain, 186)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Stayin' Alive, 187)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Knocking on Heaven's Door, 188)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Free Bird, 189)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wichita Lineman, 190)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (There Goes My Baby, 191)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Peggy Sue, 192)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Maybe, 193)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Sweet Child O' Mine, 194)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Joe, 196)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Flash Light, 197)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Loser, 198)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bizarre Love Triangle, 199)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Come Together, 200)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Positively 4th Street, 201)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Lean On Me, 203)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Reach Out, 204)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bye Bye Love, 205)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Gloria, 206)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (In My Room, 207)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (96 Tears, 208)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Caroline, 209)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (1999, 210)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Your Cheatin' Heart, 211)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Rockin' in the Free World, 212)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sh-Boom, 213)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Do You Believe in Magic, 214)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Jolene, 215)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Boom Boom, 216)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Spoonful, 217)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Walk Away Renee, 218)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Walk on the Wild Side, 219)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Oh, 220)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Dance to the Music, 221)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Good Times, 222)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hoochie Coochie Man, 223)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Moondance, 224)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Should I Stay or Should I Go, 226)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Mannish Boy, 227)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Just Like a Woman, 228)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sexual Healing, 229)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Only the Lonely, 230)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (We Gotta Get Out of This Place, 231)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I'll Feel a Whole Lot Better, 232)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Got a Woman, 233)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Everyday, 234)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Fall to Pieces, 236)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Son of a Preacher Man, 238)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Stand!, 239)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Gimme Some Lovin', 242)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Night They Drove Old Dixie Down, 243)'}
+{'status': 'Success', 'msg': 'Successful insertion of data ((Your Love Keeps Lifting Me) Higher and Higher, 244)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hot Fun in the Summertime, 245)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rappers Delight, 246)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Chain of Fools, 247)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Mack the Knife, 249)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Money Honey, 250)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (All the Young Dudes, 251)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Highway to Hell, 252)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Heart of Glass, 253)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Paranoid Android, 254)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wild Thing, 255)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Can See for Miles, 256)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hallelujah, 257)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Oh, 258)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Higher Ground, 259)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ooo Baby Baby, 260)'}
+{'status': 'Success', 'msg': "Successful insertion of data (He's a Rebel, 261)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sail Away, 262)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tighten Up, 263)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Walking in the Rain, 264)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sunday Bloody Sunday, 266)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Roadrunner, 267)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (He Stopped Loving Her Today, 268)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sloop John B, 269)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sweet Little Sixteen, 270)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Something, 271)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Somebody to Love, 272)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Born in the U.S.A., 273)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I'll Take You There, 274)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ziggy Stardust, 275)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Pictures of You, 276)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Chapel of Love, 277)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Ain't No Sunshine, 278)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (You Are the Sunshine of My Life, 279)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Help Me, 280)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Call Me, 281)'}
+{'status': 'Success', 'msg': "Successful insertion of data ((What's So Funny 'Bout) Peace Love and Understanding?, 282)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Attractions, 283)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Smoke Stack Lightning, 284)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Summer Babe, 285)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Walk This Way, 286)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Can't Buy Me Love, 288)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Stan, 289)'}
+{'status': 'Success', 'msg': "Successful insertion of data (She's Not There, 290)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Train in Vain, 291)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tired of Being Alone, 292)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Black Dog, 293)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Street Fighting Man, 294)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Get Up, 295)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Heart of Gold, 296)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (One Way or Another, 297)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Prayer, 299)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ruby Tuesday, 302)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (With a Little Help From My Friends, 303)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Say It Loud -- I'm Black and Proud, 304)"}
+{'status': 'Success', 'msg': "Successful insertion of data (That's Entertainment, 305)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Lonely Teardrops, 307)'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Love Got To Do With It, 308)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Iron Man, 309)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wake Up Little Susie, 310)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (In Dreams, 311)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Put a Spell on You, 312)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Comfortably Numb, 313)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wish You Were Here, 315)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Many Rivers to Cross, 316)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Alison, 317)'}
+{'status': 'Success', 'msg': "Successful insertion of data (School's Out, 318)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Heartbreaker, 319)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Cortez the Killer, 320)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Fight the Power, 321)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Dancing Barefoot, 322)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Good Lovin', 324)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Get Up (I Feel Like Being a) Sex Machine, 325)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (For Your Precious Love, 326)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The End, 327)'}
+{'status': 'Success', 'msg': "Successful insertion of data (That's the Way of the World, 328)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (We Will Rock You, 329)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I Can't Make You Love Me, 330)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Subterranean Homesick Blues, 331)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Spirit in the Sky, 332)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wild Horses, 333)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sweet Jane, 334)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Walk This Way, 335)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Beat It, 336)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Maybe I'm Amazed, 337)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (You Keep Me Hanging On, 338)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Baba O'Riley, 339)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Harder They Come, 340)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Runaround Sue, 341)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Jim Dandy, 342)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Piece of My Heart, 343)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (La Bamba, 344)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (California Love, 345)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Candle in the Wind, 346)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (That Lady (Part 1 and 2), 347)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Spanish Harlem, 348)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Locomotion, 349)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Great Pretender, 350)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (All Shook Up, 351)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tears in Heaven, 352)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Watching the Detectives, 353)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bad Moon Rising, 354)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sweet Dreams (Are Made of This), 355)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Little Wing, 356)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Nowhere to Run, 357)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Got My Mojo Working, 358)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Complete Control, 360)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (All You Need Is Love, 361)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Letter, 362)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Highway 61 Revisited, 363)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Unchained Melody, 364)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (How Deep Is Your Love, 365)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (White Room, 366)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Personal Jesus, 367)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I'm A Man, 368)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Wind Cries Mary, 369)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I Can't Explain, 370)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wonderful World, 372)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Brown Eyed Handsome Man, 373)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Another Brick in the Wall Part 2, 374)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Fake Plastic Trees, 375)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hit the Road Jack, 376)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Pride (In The Name of Love), 377)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Goodbye Yellow Brick Road, 379)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tell It Like It Is, 380)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Bitter Sweet Symphony, 381)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Whipping Post, 382)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ticket to Ride, 383)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ohio, 384)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Know You Got Soul, 385)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Tiny Dancer, 386)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Roxanne, 387)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Baby I Need Your Loving, 389)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Band of Gold, 390)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (O-o-h Child, 391)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Summer in the City, 392)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Can't Help Falling in Love, 393)"}
+{'status': 'Success', 'msg': "Successful insertion of data (Remember (Walkin' in the Sand), 394)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Thirteen, 395)'}
+{'status': 'Success', 'msg': "Successful insertion of data ((Don't Fear) the Reaper, 396)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sweet Home Alabama, 397)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Enter Sandman, 398)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Kicks, 399)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Tonight's the Night, 400)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Thank You (Falettinme Be Mice Elf Agin), 401)'}
+{'status': 'Success', 'msg': "Successful insertion of data (C'mon Everybody, 402)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Visions of Johanna, 403)'}
+{'status': 'Success', 'msg': "Successful insertion of data (We've Only Just Begun, 404)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Believe I Can Fly, 405)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (In Bloom, 406)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sweet Emotion, 407)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Crossroads, 408)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Monkey Gone to Heaven, 409)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Feel Love, 410)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ode to Billie Joe, 411)'}
+{'status': 'Success', 'msg': "Successful insertion of data (The Girl Can't Help It, 412)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Young Blood, 413)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I Can't Help Myself, 414)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Boys of Summer, 415)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Fuck tha Police, 416)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Suite: Judy Blue Eyes, 417)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Nuthin' But a 'G' Thang, 418)"}
+{'status': 'Success', 'msg': "Successful insertion of data (It's Your Thing, 419)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Piano Man, 420)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Blue Suede Shoes, 422)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Smoke on the Water, 425)'}
+{'status': 'Success', 'msg': "Successful insertion of data (New Year's Day, 426)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Devil With a Blue Dress On/Good Golly Miss Molly, 427)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Wheels, 428)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Everybody Needs Somebody to Love, 429)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (White Man in Hammersmith Palais, 430)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Ain't It a Shame, 431)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Midnight Train to Georgia, 432)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Ramble On, 433)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Beast of Burden, 435)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Alone Again Or, 436)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Love Me Tender, 437)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Wanna Be Your Dog, 438)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Pink Houses, 439)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Come Go With Me, 441)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Keep a Knockin', 442)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Shot the Sheriff, 443)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Got You Babe, 444)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Come As You Are, 445)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Pressure Drop, 446)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Leader of the Pack, 447)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Heroin, 448)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Penny Lane, 449)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (By the Time I Get to Phoenix, 450)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (The Twist, 451)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Paradise City, 453)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (All Apologies, 455)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Stagger Lee, 456)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sheena Is a Punk Rocker, 457)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Soul Man, 458)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Rollin' Stone, 459)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (One Fine Day, 460)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Kiss, 461)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect Yourself, 462)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rain, 463)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Standing in the Shadows of Love, 464)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Surrender, 465)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Runaway, 466)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Welcome to the Jungle, 467)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Search and Destroy, 468)'}
+{'status': 'Success', 'msg': "Successful insertion of data (It's Too Late, 469)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Free Man in Paris, 470)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (On the Road Again, 471)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Where Did Our Love Go, 472)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Do Right Woman, 473)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (One Nation Under a Groove, 474)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Sabotage, 475)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Want to Know What Love Is, 476)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Super Freak, 477)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (White Rabbit, 478)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Lady Marmalade, 479)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Young Americans, 481)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I'm Eighteen, 482)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Just Like Heaven, 483)'}
+{'status': 'Success', 'msg': "Successful insertion of data (I Love Rock 'N Roll, 484)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Graceland, 485)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rhiannon (Will You Ever Win), 488)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (I Will Survive, 489)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Brown Sugar, 490)'}
+{'status': 'Success', 'msg': "Successful insertion of data (You Don't Have to Say You Love Me, 491)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Running on Empty, 492)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Then He Kissed Me, 493)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Desperado, 494)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Shop Around, 495)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Miss You, 496)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Buddy Holly, 497)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Rainy Night in Georgia, 498)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (More Than a Feeling, 500)'}

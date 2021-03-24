@@ -52,17 +52,34 @@ def overlay():
         click.echo(f"Must login first (using give_credentials command)")
 
 @cli.command()
-def join():
+@click.option(  '-a', \
+                '--all', \
+                default=False, \
+                is_flag=True)
+def join(all):
     global hasJoined
     if hasLoggedIn:
-        hasJoined = True
-        click.echo(f"Attempting to join ToyChord P2P Network with ip = {THIS_IP}, port={THIS_PORT}, on bootstrap = {BOOTSTRAP_IP}")
-        res = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/join")).json()
-        click.echo(f"Successfully joined with id {res['assigned_position']}")
-
+        if not all:
+            hasJoined = True
+            click.echo(f"Attempting to join ToyChord P2P Network with ip = {THIS_IP}, port={THIS_PORT}, on bootstrap = {BOOTSTRAP_IP}")
+            res = (requests.get(f"http://{THIS_IP}:{THIS_PORT}/join")).json()
+            click.echo(f"Successfully joined with id {res['assigned_position']}")
+        else:
+            boot_ip = "192.168.1.1:5000"
+            # joins all nodes based on credentials given
+            for i in range(1, 6):
+                tmp_ip="192.168.1."+str(i)
+                tmp_port="5000"
+                click.echo(f"Attempting to join ToyChord P2P Network with ip = {tmp_ip}, port={tmp_port}, on bootstrap = {BOOTSTRAP_IP}")
+                res = (requests.get(f"http://{tmp_ip}:{tmp_port}/join")).json()
+                click.echo(f"Successfully joined with id {res['assigned_position']}")
+                tmp_port="5001"
+                click.echo(f"Attempting to join ToyChord P2P Network with ip = {tmp_ip}, port={tmp_port}, on bootstrap = {BOOTSTRAP_IP}")
+                res = (requests.get(f"http://{tmp_ip}:{tmp_port}/join")).json()
+                click.echo(f"Successfully joined with id {res['assigned_position']}")
     else:
         click.echo(f"Must login first (using give_credentials command)")
-    # pass
+
 @cli.command()
 def depart():
     global hasJoined
@@ -74,12 +91,12 @@ def depart():
         click.echo(f"Must login first (using give_credentials command) and join")
 @cli.command()
 def print_all():
-        if hasLoggedIn:
-            click.echo(f"Local node running on ip{THIS_IP}:{THIS_PORT} has DHT:")
-            res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/print_all")
-            click.echo(res.json())
-        else:
-            click.echo(f"Must login first (using give_credentials command)")
+    if hasLoggedIn:
+        click.echo(f"Local node running on ip{THIS_IP}:{THIS_PORT} has DHT:")
+        res = requests.get(f"http://{THIS_IP}:{THIS_PORT}/print_all")
+        click.echo(res.json())
+    else:
+        click.echo(f"Must login first (using give_credentials command)")
 
 @cli.command()
 @click.argument('key')
@@ -188,4 +205,4 @@ if __name__=="__main__":
 
     register_repl(cli)
     cli()
-    # give_credentials()
+# give_credentials()

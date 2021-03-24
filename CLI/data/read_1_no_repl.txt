@@ -1,0 +1,500 @@
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Satisfaction is value: 2'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': "Successful query result for key What'd I Say is value: 10"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Good Vibrations is value: 6'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Imagine is value: 3'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Smells Like Teen Spirit is value: 9'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Johnny B. Goode is value: 7'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}

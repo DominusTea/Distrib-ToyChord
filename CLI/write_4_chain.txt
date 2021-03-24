@@ -1,0 +1,14 @@
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 1)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Satisfaction, 2)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Imagine, 3)'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 4)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 5)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Good Vibrations, 6)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Johnny B. Goode, 7)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 8)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Smells Like Teen Spirit, 9)'}
+{'status': 'Success', 'msg': "Successful insertion of data (What'd I Say, 10)"}
+{'status': 'Success', 'msg': 'Successful insertion of data (My Generation, 11)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (A Change Is Gonna Come, 12)'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Yesterday, 13)'}
+{'status': 'Success', 'msg': "Successful insertion of data (Blowin' in the Wind, 14)"}

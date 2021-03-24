@@ -1,0 +1,500 @@
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 501)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 501'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 501'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 501'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 502)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 1'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 502'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 5'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 503)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 502'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 1'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 503'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 504)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 502'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 502'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 504'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 505)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 503'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 505'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 505'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 506)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 506'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 506'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 504'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 503'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 507)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 4"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 508)"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 508"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 504'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 509)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 508"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 508"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 510)"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 503'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 507'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 511)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 509'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 510"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 509'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 503'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 512)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 511'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 512'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 509'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 511'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 513)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 512'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 512'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 514)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 512'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 512'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 515)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 515"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 515"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 515"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 516)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 516'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 516'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 517)"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 517"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 514'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 513'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 518)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 518'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 517"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 514'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 518'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 519)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 514'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 514'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 519'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 519'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 520)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 519'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 516'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 521)"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 519'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 516'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 519'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 522)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 522'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 521"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 519'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 521"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 523)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 523'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 523'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 523'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 524)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 523'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 523'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 525)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 525'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 525'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 525'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 526)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 522'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 520'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 526'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 527)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 522'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 522'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 526'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 521"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 528)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 521"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 526'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 526'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 521"}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 529)"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 526'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 529"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 526'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 530)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 530'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 529"}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 531)"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 531"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 530'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 530'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 532)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 530'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 532'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 532'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 533)"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 527'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 532'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 532'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 534)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 534'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 533"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 534'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 527'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 535)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 533"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 527'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 536)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 533"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 537)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 536'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 538)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 535'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 539)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 539'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 536'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 540)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 540'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 536'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 528'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 541)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 541'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 536'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 540'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 542)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 542'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 536'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 543)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 543'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 541'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 543'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 543'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 544)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 541'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 541'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 545)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 545'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 541'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 538"}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 546)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 547)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 548)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 547'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 547'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 544'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 549)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 549'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 548'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 548'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 550)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 550'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 549'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 549'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 551)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 550'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 550'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 552)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 552'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 550'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 552'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 553)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 552'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 553'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 554)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 552'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 552'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 552'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 555)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 555'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 554'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 555'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 556)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 556'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 557)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 557'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 557'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 554'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 558)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 558'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 558'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 554'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 559)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 558'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 559'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 558'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 558'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 560)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 560'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 558'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 561)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 546"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 560'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 562)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 561'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 561'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 562"}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 563)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 561'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 561'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 560'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 561'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 564)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 561'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 564"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 560'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 565)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 560'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 565'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 560'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 566)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 565'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 564"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 566'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 564"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 567)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 551'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 565'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 565'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 568)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 565'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 569)"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 568'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 568'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 568'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 568'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 570)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 570'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 570'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 569"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 571)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 570'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 569"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 571'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 570'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 572)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 569"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 569"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 569"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 569"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 573)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 574)"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 571'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 575)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 575'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 573'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 576)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 576'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 576'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 577)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 577'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 577'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 578)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 577'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 576'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 576'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 579)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 579'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 579'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 580)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 578'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 578'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 581)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 582)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 567'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 583)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 583'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 584)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 583'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 581'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 585)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 584'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 584'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 586)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 587)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 586'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 588)'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 587'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 588'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 588'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Respect, 589)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 588'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 574"}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 590)"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 588'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 591)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 591'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 591'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': "Successful insertion of data (What's Going On, 592)"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 585'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 593)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 591'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 593'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 591'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 591'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 594)'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 594'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 593'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 594'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 595)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 593'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 595'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 595'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 596)'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 593'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 596'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 596'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 597)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 597'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 593'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 597'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Hey Jude, 598)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 593'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 599)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': "Successful query result for key What's Going On is value: 592"}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful insertion of data (Like a Rolling Stone, 600)'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Hey Jude is value: 598'}
+{'status': 'Success', 'msg': 'Successful query result for key Respect is value: 589'}
+{'status': 'Success', 'msg': 'Successful query result for key Like a Rolling Stone is value: 600'}
